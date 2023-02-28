@@ -1,11 +1,10 @@
-import React from "react";
-import Navbar from "./Navbar";
+import React from 'react'
+import Navbar from './Navbar'
 
 const FixedContent = (props) => {
-
   const OpenValue = (value) => {
-    props.NavbarstatusPass(value);
-  };
+    props.NavbarstatusPass(value)
+  }
 
   return (
     <div className="InnerWrapper">
@@ -16,7 +15,7 @@ const FixedContent = (props) => {
         <div></div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default FixedContent;
+export default FixedContent

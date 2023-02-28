@@ -1,13 +1,13 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import OurStory from "./Components/OurStory";
-import Dashboard from "./Components/Dashboard";
-import GetIntouch from "./Components/GetIntouch";
-import MyCart from "./Components/Mycart";
-import ThankYou from "./Components/ThankYou";
-import HomeLogin from "./Components/Login/HomeLogin";
-import PageNotFound from "./Components/PageNotFound";
-import PrivateRoute from "./Common/PrivateRoute";
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import OurStory from './Components/OurStory'
+import Dashboard from './Components/Dashboard'
+import GetIntouch from './Components/GetIntouch'
+import MyCart from './Components/Mycart'
+import ThankYou from './Components/ThankYou'
+import HomeLogin from './Components/Login/HomeLogin'
+import PageNotFound from './Components/PageNotFound'
+import PrivateRoute from './Common/PrivateRoute'
 
 const Root = () => {
   return (
@@ -65,7 +65,7 @@ const Root = () => {
       />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
-  );
-};
+  )
+}
 
-export default Root;
+export default Root

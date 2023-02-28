@@ -1,9 +1,9 @@
-import React from "react";
-import OwlCarousel from "react-owl-carousel";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
+import React from 'react'
+import OwlCarousel from 'react-owl-carousel'
+import 'owl.carousel/dist/assets/owl.carousel.css'
+import 'owl.carousel/dist/assets/owl.theme.default.css'
 
-function Slider() {
+function Slider () {
   return (
     <OwlCarousel className="owl-theme" loop={false} items={1}>
       <div className="item slideOne">
@@ -11,7 +11,7 @@ function Slider() {
           <div>
             <img
               className="img-responsive"
-              src={require("../../Images/fine-dine-image-1.png")}
+              src={require('../../Images/fine-dine-image-1.png')}
               alt="footballCartoon"
             />
           </div>
@@ -27,7 +27,7 @@ function Slider() {
           <div>
             <img
               className="img-responsive"
-              src={require("../../Images/fine-dine-image-7.png")}
+              src={require('../../Images/fine-dine-image-7.png')}
               alt="footballCartoon"
             />
           </div>
@@ -43,7 +43,7 @@ function Slider() {
           <div>
             <img
               className="img-responsive"
-              src={require("../../Images/fine-dine-image-8.png")}
+              src={require('../../Images/fine-dine-image-8.png')}
               alt="footballCartoon"
             />
           </div>
@@ -55,7 +55,7 @@ function Slider() {
         </div>
       </div>
     </OwlCarousel>
-  );
+  )
 }
 
-export default Slider;
+export default Slider

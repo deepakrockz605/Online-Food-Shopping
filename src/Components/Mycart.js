@@ -1,208 +1,180 @@
-import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import Box from "@mui/material/Box";
-import Tab from "@mui/material/Tab";
-import TabContext from "@mui/lab/TabContext";
-import TabList from "@mui/lab/TabList";
-import TabPanel from "@mui/lab/TabPanel";
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import Box from '@mui/material/Box'
+import Tab from '@mui/material/Tab'
+import TabContext from '@mui/lab/TabContext'
+import TabList from '@mui/lab/TabList'
+import TabPanel from '@mui/lab/TabPanel'
 
 import {
   addQuantity,
   subtractQuantity,
-  removeItem,
-} from "../actions/cartActions";
-import MainScreen from "./screens/MainScreen/MainScreen";
+  removeItem
+} from '../actions/cartActions'
+import MainScreen from './screens/MainScreen/MainScreen'
 
 const MyCart = (props) => {
-  const [index, setIndex] = useState(0);
-  const [deliveryFlag, setDeliveryFlag] = useState(false);
-  const [ZIPvalue, setZIPvalue] = useState("");
-  const [Mobilevalue, setMobilevalue] = useState("");
-  const [ShipFullName, setShipFullName] = useState("");
-  const [shipState, setshipState] = useState("");
-  const [shipCity, setshipCity] = useState("");
-  const [shipaddress, setShipaddress] = useState("");
-  const [shipEmail, setShipEmail] = useState("");
-  const [shipLandmark, setShipLandmark] = useState("");
-  const [emailErrorFlag, setEmailErrorFlag] = useState(false);
-  const [errorLogZip, setErrorLogZip] = useState(false);
-  const [errorLogMobile, setErrorLogMobile] = useState(false);
-  const [isLogggedin, setIsLogggedin] = useState(false);
-  const [isRegister, setIsRegister] = useState(false);
-  const [quantity, setQuantity] = useState(1);
-
-  const handleChange = (event, value) => {
-    setIndex(value);
-  };
-
-  const handleChangeIndex = (index) => {
-    setIndex(index);
-  };
+  const [deliveryFlag, setDeliveryFlag] = useState(false)
+  const [ZIPvalue, setZIPvalue] = useState('')
+  const [Mobilevalue, setMobilevalue] = useState('')
+  const [ShipFullName, setShipFullName] = useState('')
+  const [shipState, setshipState] = useState('')
+  const [shipCity, setshipCity] = useState('')
+  const [shipaddress, setShipaddress] = useState('')
+  const [shipEmail, setShipEmail] = useState('')
+  const [shipLandmark, setShipLandmark] = useState('')
+  const [emailErrorFlag, setEmailErrorFlag] = useState(false)
+  const [errorLogZip, setErrorLogZip] = useState(false)
+  const [errorLogMobile, setErrorLogMobile] = useState(false)
 
   const handleAddQuantity = (foodMenuID) => {
-    props.addQuantity(foodMenuID);
-  };
+    props.addQuantity(foodMenuID)
+  }
 
   const handleSubtractQuantity = (foodMenuID) => {
-    props.subtractQuantity(foodMenuID);
-  };
+    props.subtractQuantity(foodMenuID)
+  }
 
   const handleRemove = (foodMenuID) => {
-    props.removeItem(foodMenuID);
-  };
+    props.removeItem(foodMenuID)
+  }
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    window.scrollTo(0, 0)
+  }, [])
 
-  const handleNumbersOnly = (e) => {
-    setQuantity(e.target.value);
-  };
-
-  const [value, setValue] = useState("1");
+  const [value, setValue] = useState('1')
 
   const handleChangeSwipe = (event, newValue) => {
-    if(deliveryFlag) {
-      setValue(newValue);
+    if (deliveryFlag) {
+      setValue(newValue)
     }
-  };
+  }
 
   const handleAddressSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (errorLogZip || errorLogMobile || emailErrorFlag) {
-      setValue('1');
-      setDeliveryFlag(false);
+      setValue('1')
+      setDeliveryFlag(false)
     }
     if (
       emailErrorFlag === false &&
       errorLogMobile === false &&
       errorLogZip === false
     ) {
-      setValue('2');
-      setDeliveryFlag(true);
+      setValue('2')
+      setDeliveryFlag(true)
     }
-  };
+  }
 
   const handlePreviousCheck = (e) => {
     setValue('1')
-  };
+  }
 
   const handlePaymentCheck = (e) => {
-    if (deliveryFlag === true) {
-      setIndex('2');
-    } else {
-      alert("Please Fill The Delivery Address First To Continue");
-      setIndex('1');
+    if (!deliveryFlag === true) {
+      alert('Please Fill The Delivery Address First To Continue')
     }
-  };
+  }
 
   const handleDeliveryReset = (e) => {
-    setDeliveryFlag(false);
-  };
+    setDeliveryFlag(false)
+  }
 
   const handleDeliveryValidation = async (e) => {
-    if (e.target.id === "fullName") {
-      const re = /^[a-zA-Z ]*$/;
-      if (e.target.value === "" || re.test(e.target.value)) {
-        setShipFullName(e.target.value);
+    if (e.target.id === 'fullName') {
+      const re = /^[a-zA-Z ]*$/
+      if (e.target.value === '' || re.test(e.target.value)) {
+        setShipFullName(e.target.value)
       } else {
-        alert("Only Text Values Accepted");
+        alert('Only Text Values Accepted')
       }
     }
 
-    if (e.target.id === "shipState") {
-      const re = /^[a-zA-Z ]*$/;
-      if (e.target.value === "" || re.test(e.target.value)) {
-        setshipState(e.target.value);
+    if (e.target.id === 'shipState') {
+      const re = /^[a-zA-Z ]*$/
+      if (e.target.value === '' || re.test(e.target.value)) {
+        setshipState(e.target.value)
       } else {
-        alert("Only Text Values Accepted");
+        alert('Only Text Values Accepted')
       }
     }
 
-    if (e.target.id === "shipCity") {
-      const re = /^[a-zA-Z ]*$/;
-      if (e.target.value === "" || re.test(e.target.value)) {
-        setshipCity(e.target.value);
+    if (e.target.id === 'shipCity') {
+      const re = /^[a-zA-Z ]*$/
+      if (e.target.value === '' || re.test(e.target.value)) {
+        setshipCity(e.target.value)
       } else {
-        alert("Only Text Values Accepted");
+        alert('Only Text Values Accepted')
       }
     }
 
-    if (e.target.id === "shipZIP") {
-      const re = /^[0-9\b]+$/;
-      if (e.target.value === "" || re.test(e.target.value)) {
-        setZIPvalue(e.target.value);
+    if (e.target.id === 'shipZIP') {
+      const re = /^[0-9\b]+$/
+      if (e.target.value === '' || re.test(e.target.value)) {
+        setZIPvalue(e.target.value)
         if (ZIPvalue.length <= 4) {
-          setErrorLogZip(true);
+          setErrorLogZip(true)
         } else {
-          setErrorLogZip(false);
+          setErrorLogZip(false)
         }
       } else {
-        alert("Only Numbers are Allowed");
+        alert('Only Numbers are Allowed')
       }
     }
 
-    if (e.target.id === "shipMobile") {
-      const re = /^[0-9\b]+$/;
-      if (e.target.value === "" || re.test(e.target.value)) {
-        setMobilevalue(e.target.value);
+    if (e.target.id === 'shipMobile') {
+      const re = /^[0-9\b]+$/
+      if (e.target.value === '' || re.test(e.target.value)) {
+        setMobilevalue(e.target.value)
         if (Mobilevalue.length <= 7) {
-          setErrorLogMobile(true);
+          setErrorLogMobile(true)
         } else {
-          setErrorLogMobile(false);
+          setErrorLogMobile(false)
         }
       } else {
-        alert("Only Numbers are Allowed");
+        alert('Only Numbers are Allowed')
       }
     }
 
-    if (e.target.id === "shipaddress") {
-      const re = /^[#.0-9a-zA-Z\s,-]+$/;
-      if (e.target.value === "" || re.test(e.target.value)) {
-        setShipaddress(e.target.value);
+    if (e.target.id === 'shipaddress') {
+      const re = /^[#.0-9a-zA-Z\s,-]+$/
+      if (e.target.value === '' || re.test(e.target.value)) {
+        setShipaddress(e.target.value)
       } else {
-        alert("Special Characters Not Allowed");
+        alert('Special Characters Not Allowed')
       }
     }
 
-    if (e.target.id === "shipLandmark") {
-      const re = /^[#.0-9a-zA-Z\s,-]+$/;
-      if (e.target.value === "" || re.test(e.target.value)) {
-        setShipLandmark(e.target.value);
+    if (e.target.id === 'shipLandmark') {
+      const re = /^[#.0-9a-zA-Z\s,-]+$/
+      if (e.target.value === '' || re.test(e.target.value)) {
+        setShipLandmark(e.target.value)
       } else {
-        alert("Special Characters Not Allowed");
+        alert('Special Characters Not Allowed')
       }
     }
 
-    if (e.target.id === "shipEmail") {
-      var re = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-      setShipEmail(e.target.value);
-      var email = shipEmail;
+    if (e.target.id === 'shipEmail') {
+      const re = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
+      setShipEmail(e.target.value)
+      const email = shipEmail
       if (re.test(email)) {
-        setShipEmail(e.target.value);
-        setEmailErrorFlag(false);
+        setShipEmail(e.target.value)
+        setEmailErrorFlag(false)
       } else {
-        setEmailErrorFlag(true);
+        setEmailErrorFlag(true)
       }
     }
-  };
-
-  const handleLoggedIn = (langValue) => {
-    setIsLogggedin(langValue);
-  };
-
-  const handleRegister = (registerValue) => {
-    setIsRegister(registerValue);
-  };
-
-  var data = props.state;
+  }
 
   return (
     <div className="mycart--section">
       <div className="cartMainData">
         <div className="">
-          {props.items.length === 0 ? (
+          {props.items.length === 0
+            ? (
             <div className="container">
               <div className="text-center">
                 <p className="cartEmptyText">Your Cart is Empty.</p>
@@ -216,11 +188,12 @@ const MyCart = (props) => {
                 </div>
               </div>
             </div>
-          ) : (
+              )
+            : (
             <div className="InnerWrapper">
               <div className="cartInfo">
                 <div className="container">
-                  <div className="cartInfoCret" style={{ fontWeight: "900" }}>
+                  <div className="cartInfoCret" style={{ fontWeight: '900' }}>
                     Price are Inclusive of all taxes
                   </div>
                 </div>
@@ -228,15 +201,23 @@ const MyCart = (props) => {
               <div className="container Cartcontainer">
                 <div
                   className="row cartFlex"
-                  style={{ paddingTop: "30px", paddingBottom: "30px" }}
+                  style={{ paddingTop: '30px', paddingBottom: '30px' }}
                 >
                   <div className="col-md-8 vertivleBar">
-                    <Box sx={{ width: "100%", typography: "body1" }}>
+                    <Box sx={{ width: '100%', typography: 'body1' }}>
                       <TabContext value={value}>
-                        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                           <TabList onChange={handleChangeSwipe}>
-                            <Tab label="Delivery Address" value="1" onClick={handlePreviousCheck} />
-                            <Tab label="Payment" value="2" onClick={handlePaymentCheck} />
+                            <Tab
+                              label="Delivery Address"
+                              value="1"
+                              onClick={handlePreviousCheck}
+                            />
+                            <Tab
+                              label="Payment"
+                              value="2"
+                              onClick={handlePaymentCheck}
+                            />
                           </TabList>
                         </Box>
                         <TabPanel value="1">
@@ -405,7 +386,7 @@ const MyCart = (props) => {
                                 <button
                                   className="btn fourth"
                                   type="reset"
-                                  style={{ marginRight: "15px" }}
+                                  style={{ marginRight: '15px' }}
                                   onClick={handleDeliveryReset}
                                 >
                                   Reset
@@ -424,23 +405,7 @@ const MyCart = (props) => {
                         </TabPanel>
                       </TabContext>
                     </Box>
-                    <div>
-                      {/* <Tabs value={index} onChange={handleChange}>
-                        <Tab
-                          label="Delivery Address"
-                          onClick={handlePreviousCheck}
-                        />
-                        <Tab label="Payment" onClick={handlePaymentCheck} />
-                      </Tabs> */}
-                      {/* <SwipeableViews
-                        disabled={true}
-                        index={index}
-                        onChangeIndex={handleChangeIndex}
-                      >
-
-
-                      </SwipeableViews> */}
-                    </div>
+                    <div></div>
                   </div>
 
                   <div className="col-md-4">
@@ -451,7 +416,7 @@ const MyCart = (props) => {
                             <div className="col-md-12">
                               <div className="container-Home-CartproDetails">
                                 <div className="cartProduct_Name">
-                                  <ul style={{ display: "flex" }}>
+                                  <ul style={{ display: 'flex' }}>
                                     <li>
                                       <span>
                                         <img
@@ -461,7 +426,7 @@ const MyCart = (props) => {
                                           className="foodPreference"
                                           alt=""
                                         />
-                                      </span>{" "}
+                                      </span>{' '}
                                     </li>
                                     <li>
                                       <p>{item.foodMenutitle}</p>
@@ -485,9 +450,9 @@ const MyCart = (props) => {
                                         <input
                                           type="number"
                                           className="valueButtonCart"
-                                          id={"numberCart_ " + item.foodMenuID}
+                                          id={'numberCart_ ' + item.foodMenuID}
                                           value={item.quantity}
-                                          onChange={handleNumbersOnly}
+                                          disabled={true}
                                         />
                                       </div>
                                       <div
@@ -568,33 +533,33 @@ const MyCart = (props) => {
                 </div>
               </div>
             </div>
-          )}
+              )}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const mapStateToProps = (state) => {
   return {
     state,
     items: state.addedItems,
-    adData: state,
-  };
-};
+    adData: state
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
     addQuantity: (foodMenuID) => {
-      dispatch(addQuantity(foodMenuID));
+      dispatch(addQuantity(foodMenuID))
     },
     subtractQuantity: (foodMenuID) => {
-      dispatch(subtractQuantity(foodMenuID));
+      dispatch(subtractQuantity(foodMenuID))
     },
     removeItem: (foodMenuID) => {
-      dispatch(removeItem(foodMenuID));
-    },
-  };
-};
+      dispatch(removeItem(foodMenuID))
+    }
+  }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyCart);
+export default connect(mapStateToProps, mapDispatchToProps)(MyCart)

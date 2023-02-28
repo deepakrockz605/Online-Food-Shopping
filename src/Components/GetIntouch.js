@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import Home from "./Home";
+import React, { useEffect } from 'react'
+import Home from './Home'
 
 const GetIntouch = () => {
   useEffect(() => {
-    window.scrollTo(0, 450);
-  }, []);
+    window.scrollTo(0, 450)
+  }, [])
 
   return (
     <div>
@@ -30,7 +30,7 @@ const GetIntouch = () => {
               <div>
                 <p className="story--paraInfo">
                   Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
+                  typesetting industry. Lorem Ipsum has been the industry
                   standard dummy text ever since the 1500s, when an unknown
                   printer took a galley of type and scrambled it to make a type
                   specimen book.
@@ -43,10 +43,10 @@ const GetIntouch = () => {
                       <div className="wpb_wrapper">
                         <h2 className="wpb_wrapper__heading">The History</h2>
                         <div className="wpb_wrapper__info">
-                          The{" "}
-                          <strong style={{ color: "#a20f0f " }}>
+                          The{' '}
+                          <strong style={{ color: '#a20f0f ' }}>
                             History of Kitchens
-                          </strong>{" "}
+                          </strong>{' '}
                           and Cooks gives further intimation on Mr Boulanger
                           usual menu, stating confidently that “Boulanger served
                           salted poultry and fresh eggs, all presented without a
@@ -59,10 +59,10 @@ const GetIntouch = () => {
                           According to Miss Spang, there is not a shred of
                           evidence for any of it. She said: These legends just
                           get passed on by hearsay and then spiral out of
-                          control. Her interest in{" "}
-                          <strong style={{ color: "#a20f0f" }}>
+                          control. Her interest in{' '}
+                          <strong style={{ color: '#a20f0f' }}>
                             Boulanger
-                          </strong>{" "}
+                          </strong>{' '}
                           dates back to a history of food seminar in Paris in
                           the mid-1990s
                         </div>
@@ -73,7 +73,7 @@ const GetIntouch = () => {
 
                   <div className="col-md-6 abutImg">
                     <img
-                      src={require("../Images/about01.jpg")}
+                      src={require('../Images/about01.jpg')}
                       alt="img"
                       className="img-fluid "
                     />
@@ -85,7 +85,7 @@ const GetIntouch = () => {
                 <div className="row">
                   <div className="col-md-6 abutImg">
                     <img
-                      src={require("../Images/about05.jpg")}
+                      src={require('../Images/about05.jpg')}
                       alt="img"
                       className="img-fluid"
                     />
@@ -95,10 +95,10 @@ const GetIntouch = () => {
                     <div className="vc_columnInner">
                       <div className="wpb_wrapper">
                         <div className="wpb_wrapper__info">
-                          The{" "}
-                          <strong style={{ color: "#a20f0f " }}>
+                          The{' '}
+                          <strong style={{ color: '#a20f0f ' }}>
                             History of Kitchens
-                          </strong>{" "}
+                          </strong>{' '}
                           and Cooks gives further intimation on Mr Boulanger
                           usual menu, stating confidently that “Boulanger served
                           salted poultry and fresh eggs, all presented without a
@@ -111,10 +111,10 @@ const GetIntouch = () => {
                           According to Miss Spang, there is not a shred of
                           evidence for any of it. She said: These legends just
                           get passed on by hearsay and then spiral out of
-                          control. Her interest in{" "}
-                          <strong style={{ color: "#a20f0f " }}>
+                          control. Her interest in{' '}
+                          <strong style={{ color: '#a20f0f ' }}>
                             Boulanger
-                          </strong>{" "}
+                          </strong>{' '}
                           dates back to a history of food seminar in Paris in
                           the mid-1990s
                         </div>
@@ -225,9 +225,9 @@ const GetIntouch = () => {
                         className="form-control formComment"
                         placeholder="Your Message *"
                         style={{
-                          width: "100%",
-                          height: "70px",
-                          maxHeight: "90px",
+                          width: '100%',
+                          height: '70px',
+                          maxHeight: '90px'
                         }}
                       ></textarea>
                     </div>
@@ -245,7 +245,7 @@ const GetIntouch = () => {
         </section>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default GetIntouch;
+export default GetIntouch

@@ -1,35 +1,35 @@
-import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import Home from "./Home";
-import FoodDetails from "./FoodDetails";
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
+import Home from './Home'
+import FoodDetails from './FoodDetails'
 
-var _ = require("lodash");
+const _ = require('lodash')
 
 const Dashboard = (props) => {
-  const [showPopup, setShowPopup] = useState(false);
-  const [id, setId] = useState("");
-  const [cartValue] = useState("view");
+  const [showPopup, setShowPopup] = useState(false)
+  const [id, setId] = useState('')
+  const [cartValue] = useState('view')
 
-  const LunchList = _.filter(props.Lunchitems);
-  const BarList = _.filter(props.Baritems);
+  const LunchList = _.filter(props.Lunchitems)
+  const BarList = _.filter(props.Baritems)
 
   useEffect(() => {
-    window.scrollTo(0, 450);
-  }, []);
-  
+    window.scrollTo(0, 450)
+  }, [])
+
   const togglePopup = (e) => {
-    var id= parseInt(e.target.id);
-    setShowPopup(!showPopup);
-    setId(id);
-  };
+    const id = parseInt(e.target.id)
+    setShowPopup(!showPopup)
+    setId(id)
+  }
 
-  const handlePopStatus = (value) =>{
-    setShowPopup(value);
- }
+  const handlePopStatus = (value) => {
+    setShowPopup(value)
+  }
 
- const continueOrder = (value) => {
-  setShowPopup(value)
- }
+  const continueOrder = (value) => {
+    setShowPopup(value)
+  }
 
   return (
     <div>
@@ -37,7 +37,7 @@ const Dashboard = (props) => {
       <div
         className="ourStory--section paddling-top-20 paddling-bottom-30"
         id="Delicious---section"
-        style={{ height: "400px" }}
+        style={{ height: '400px' }}
       >
         <div className="container">
           <section className="story--dishSectionMenu">
@@ -51,7 +51,7 @@ const Dashboard = (props) => {
             <div>
               <p className="story--paraInfo">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
+                industry. Lorem Ipsum has been the industry standard dummy
                 text ever since the 1500s, when an unknown printer took a galley
                 of type and scrambled it to make a type specimen book.
               </p>
@@ -73,8 +73,8 @@ const Dashboard = (props) => {
                         className="food--cardIcon"
                         onClick={togglePopup}
                       />
-                      {showPopup &&
-                      index.foodMenuID === id ? (
+                      {showPopup && index.foodMenuID === id
+                        ? (
                         <FoodDetails
                           showPopup={showPopup}
                           data={index}
@@ -83,7 +83,8 @@ const Dashboard = (props) => {
                           continueOrder={continueOrder}
                           history={props.history}
                         />
-                      ) : null}
+                          )
+                        : null}
                     </div>
 
                     <div>
@@ -125,7 +126,7 @@ const Dashboard = (props) => {
                       </div>
                       <span>
                         <button
-                          disabled={index.foodMenuProductInCart ? true : false}
+                          disabled={!!index.foodMenuProductInCart}
                           className="btn food--cardAdd open_sansbold"
                           onClick={togglePopup}
                           id={index.foodMenuID}
@@ -151,7 +152,7 @@ const Dashboard = (props) => {
             <div>
               <p className="story--paraInfo">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
+                industry. Lorem Ipsum has been the industry standard dummy
                 text ever since the 1500s, when an unknown printer took a galley
                 of type and scrambled it to make a type specimen book.
               </p>
@@ -182,14 +183,14 @@ const Dashboard = (props) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const mapStateToProps = (state) => {
   return {
     Lunchitems: state.Lunchitems,
-    Baritems: state.Baritems,
-  };
-};
+    Baritems: state.Baritems
+  }
+}
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps)(Dashboard)

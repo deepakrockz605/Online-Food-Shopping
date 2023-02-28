@@ -1,9 +1,10 @@
 const getLunchData = () => {
-  return ([
+  return [
     {
       foodMenuID: 1,
       foodMenutitle: 'Veg Manchurian',
-      foodMenuProductInfo: 'Salami chicken bresaola tail drumstick pork belly. Alcatra landjaeger cow drumstick jowl',
+      foodMenuProductInfo:
+        'Salami chicken bresaola tail drumstick pork belly. Alcatra landjaeger cow drumstick jowl',
       foodMenuProductPrice: '220',
       foodMenuProductHalfPrice: '170',
       foodMenuProductStrikePrice: '250',
@@ -15,7 +16,8 @@ const getLunchData = () => {
     {
       foodMenuID: 2,
       foodMenutitle: 'Chicken Schezwan Dry',
-      foodMenuProductInfo: 'Leberkas pig turducken fatback. Pastrami tri-tip cow spare ribs tail,',
+      foodMenuProductInfo:
+        'Leberkas pig turducken fatback. Pastrami tri-tip cow spare ribs tail,',
       foodMenuProductPrice: '230',
       foodMenuProductHalfPrice: '130',
       foodMenuProductStrikePrice: '240',
@@ -27,7 +29,8 @@ const getLunchData = () => {
     {
       foodMenuID: 3,
       foodMenutitle: 'Chicken Chilli Boneless Dry',
-      foodMenuProductInfo: 'Beef ground round pork belly turducken alcatra doner fatback short',
+      foodMenuProductInfo:
+        'Beef ground round pork belly turducken alcatra doner fatback short',
       foodMenuProductPrice: '270',
       foodMenuProductHalfPrice: '150',
       foodMenuProductStrikePrice: '285',
@@ -39,7 +42,8 @@ const getLunchData = () => {
     {
       foodMenuID: 4,
       foodMenutitle: 'Chicken Manchurian Dry',
-      foodMenuProductInfo: 'Pork chop brisket chicken fatback ball tip corned beef short loin buffalo',
+      foodMenuProductInfo:
+        'Pork chop brisket chicken fatback ball tip corned beef short loin buffalo',
       foodMenuProductPrice: '210',
       foodMenuProductHalfPrice: '120',
       foodMenuProductStrikePrice: '220',
@@ -51,7 +55,8 @@ const getLunchData = () => {
     {
       foodMenuID: 5,
       foodMenutitle: 'Chicken Crispy Dry',
-      foodMenuProductInfo: 'Burgdoggen drumstick sirloin venison leberkas porchetta andouille turkey sausage pastrami ham.',
+      foodMenuProductInfo:
+        'Burgdoggen drumstick sirloin venison leberkas porchetta andouille turkey sausage pastrami ham.',
       foodMenuProductPrice: '265',
       foodMenuProductHalfPrice: '180',
       foodMenuProductStrikePrice: '280',
@@ -63,7 +68,8 @@ const getLunchData = () => {
     {
       foodMenuID: 6,
       foodMenutitle: 'Chicken Schezwan Lollipop Dry',
-      foodMenuProductInfo: 'Beef andouille alcatra, pork chop ham hock tongue frankfurter chuck venison',
+      foodMenuProductInfo:
+        'Beef andouille alcatra, pork chop ham hock tongue frankfurter chuck venison',
       foodMenuProductPrice: '280',
       foodMenuProductHalfPrice: '150',
       foodMenuProductStrikePrice: '290',
@@ -75,7 +81,8 @@ const getLunchData = () => {
     {
       foodMenuID: 7,
       foodMenutitle: 'Chicken Barra',
-      foodMenuProductInfo: 'Salami chicken bresaola tail drumstick pork belly. Alcatra landjaeger cow drumstick jowl',
+      foodMenuProductInfo:
+        'Salami chicken bresaola tail drumstick pork belly. Alcatra landjaeger cow drumstick jowl',
       foodMenuProductPrice: '320',
       foodMenuProductHalfPrice: '180',
       foodMenuProductStrikePrice: '335',
@@ -87,7 +94,8 @@ const getLunchData = () => {
     {
       foodMenuID: 8,
       foodMenutitle: 'Chicken Tangdi Kebab',
-      foodMenuProductInfo: 'Leberkas pig turducken fatback. Pastrami tri-tip cow spare ribs tail,',
+      foodMenuProductInfo:
+        'Leberkas pig turducken fatback. Pastrami tri-tip cow spare ribs tail,',
       foodMenuProductPrice: '290',
       foodMenuProductHalfPrice: '160',
       foodMenuProductStrikePrice: '300',
@@ -96,11 +104,7 @@ const getLunchData = () => {
       foodMenuProductPreferenceIcon: require('../Images/non-vegetarian-food-symbol.png'),
       foodMenuProductInCart: false
     }
-  ]);
+  ]
 }
 
-
-
-
-
-export default getLunchData;
+export default getLunchData

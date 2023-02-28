@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import Home from "./Home";
+import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
+import Home from './Home'
 
-var _ = require("lodash");
+const _ = require('lodash')
 
 const OurStory = (props) => {
-  const [show, setShow] = useState(false);
-  const [selectID, setSelectID] = useState("");
+  const [show, setShow] = useState(false)
+  const [selectID, setSelectID] = useState('')
 
   const handleClick = (e) => {
-    var x = e.currentTarget.id;
-    setShow(!show);
-    setSelectID(x);
-  };
+    const x = e.currentTarget.id
+    setShow(!show)
+    setSelectID(x)
+  }
 
   useEffect(() => {
-    window.scrollTo(0, 450);
-  }, []);
+    window.scrollTo(0, 450)
+  }, [])
 
-  var StoryList = _.filter(props.storydata);
-  console.log("dbjdjcb", StoryList)
+  const StoryList = _.filter(props.storydata)
   return (
     <div>
       <Home />
@@ -54,30 +53,29 @@ const OurStory = (props) => {
                   <div className="storySubSection--Left">
                     <div>
                       <div className={index.storysubSectionLeftDish}>
-                        {selectID === key + "ini1" ? (
+                        {selectID === key + 'ini1' ? (
                           <div className={index.storySubSectionClass}>
                             {/* <Fade bottom> */}
-                              <img
-                                src={index.animateImageClassImage1}
-                                alt="img"
-                                className={index.animateImageClass1}
-                              />{" "}
+                            <img
+                              src={index.animateImageClassImage1}
+                              alt="img"
+                              className={index.animateImageClass1}
+                            />{' '}
                             {/* </Fade> */}
                             {/* <Fade left delay={index.fadeLeftDelay}> */}
-                              <img
-                                src={index.animateImageClassImage2}
-                                alt="img"
-                                className={index.animateImageClass2}
-                              />
+                            <img
+                              src={index.animateImageClassImage2}
+                              alt="img"
+                              className={index.animateImageClass2}
+                            />
                             {/* </Fade> */}
-
                             {/* <Fade left delay={index.fadeLeftDelay}> */}
-                              <h6 className="open_sanssemibold color-2e2e2e font-16 ourStory--pathSet--header--1 text-left">
-                                {index.storyProductTitleLeft}
-                              </h6>
-                              <p className="ourStory--pathInfo-1 color-2e2e2e font-14 open_sansregular">
-                                {index.storyProductInfoLeft}
-                              </p>
+                            <h6 className="open_sanssemibold color-2e2e2e font-16 ourStory--pathSet--header--1 text-left">
+                              {index.storyProductTitleLeft}
+                            </h6>
+                            <p className="ourStory--pathInfo-1 color-2e2e2e font-14 open_sansregular">
+                              {index.storyProductInfoLeft}
+                            </p>
                             {/* </Fade> */}
                           </div>
                         ) : null}
@@ -85,10 +83,10 @@ const OurStory = (props) => {
                       <div
                         className={index.selectPlusIconOne}
                         onClick={handleClick}
-                        id={key + "ini1"}
+                        id={key + 'ini1'}
                       >
                         <img
-                          src={require("../Images/grpCircl.png")}
+                          src={require('../Images/grpCircl.png')}
                           alt="middleImage"
                           className="img-responsive"
                         />
@@ -99,31 +97,30 @@ const OurStory = (props) => {
                   <div className="storySubSection--Right">
                     <div>
                       <div className={index.storysubSectionRightDish}>
-                        {selectID === key + "ini2" ? (
+                        {selectID === key + 'ini2' ? (
                           <div className={index.storySubSectionClass}>
                             {/* <Fade top> */}
-                              <img
-                                src={index.animateImageClassImage3}
-                                alt="img"
-                                className={index.animateImageClass3}
-                              />{" "}
+                            <img
+                              src={index.animateImageClassImage3}
+                              alt="img"
+                              className={index.animateImageClass3}
+                            />{' '}
                             {/* </Fade> */}
                             {/* <Fade right delay={index.fadeRightDelay}> */}
-                              <img
-                                src={index.animateImageClassImage4}
-                                alt="img"
-                                className={index.animateImageClass4}
-                              />
+                            <img
+                              src={index.animateImageClassImage4}
+                              alt="img"
+                              className={index.animateImageClass4}
+                            />
                             {/* </Fade> */}
-
                             {/* <Fade right delay={index.fadeRightDelay}> */}
-                              <h6 className="open_sanssemibold color-2e2e2e font-16 ourStory--pathSet--header ourStory--pathSet--header--1 text-right">
-                                {index.storyProductTitleRight}
-                              </h6>
-                              <p className="ourStory--pathInfo-1 color-2e2e2e font-14 open_sansregular">
-                                {" "}
-                                {index.storyProductInfoRight}
-                              </p>
+                            <h6 className="open_sanssemibold color-2e2e2e font-16 ourStory--pathSet--header ourStory--pathSet--header--1 text-right">
+                              {index.storyProductTitleRight}
+                            </h6>
+                            <p className="ourStory--pathInfo-1 color-2e2e2e font-14 open_sansregular">
+                              {' '}
+                              {index.storyProductInfoRight}
+                            </p>
                             {/* </Fade> */}
                           </div>
                         ) : null}
@@ -131,10 +128,10 @@ const OurStory = (props) => {
                       <div
                         className={index.selectPlusIconTwo}
                         onClick={handleClick}
-                        id={key + "ini2"}
+                        id={key + 'ini2'}
                       >
                         <img
-                          src={require("../Images/grpCircl.png")}
+                          src={require('../Images/grpCircl.png')}
                           alt="middleImage"
                           className="img-responsive"
                         />
@@ -148,13 +145,13 @@ const OurStory = (props) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const mapStateToProps = (state) => {
   return {
-    storydata: state.Storytems,
-  };
-};
+    storydata: state.Storytems
+  }
+}
 
-export default connect(mapStateToProps)(OurStory);
+export default connect(mapStateToProps)(OurStory)

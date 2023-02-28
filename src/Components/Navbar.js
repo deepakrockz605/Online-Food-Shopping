@@ -1,37 +1,34 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { updateCartQuantity } from "../actions/cartActions";
-import { compose } from "redux";
-import logo from "../Images/logo.svg";
-import { logout } from "../services/auth";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { updateCartQuantity } from '../actions/cartActions'
+import { compose } from 'redux'
+import logo from '../Images/logo.svg'
+import { logout } from '../services/auth'
 
 const Navbar = (props) => {
-
-  const navigate = useNavigate();
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [hoverUser, setHoverUser] = useState(false);
+  const navigate = useNavigate()
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [hoverUser, setHoverUser] = useState(false)
 
   const onSetSidebarOpen = (open) => {
-    setSidebarOpen(!sidebarOpen);
-    props.Navbarstatus(open);
-  };
+    setSidebarOpen(!sidebarOpen)
+    props.Navbarstatus(open)
+  }
 
   useEffect(() => {
-    props.updateCartQuantity(props.item.addedItems.foodMenuID);
-  }, []);
+    props.updateCartQuantity(props.item.addedItems.foodMenuID)
+    // // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const handleUser = (e) => {
-    setHoverUser(!hoverUser);
-  };
+    setHoverUser(!hoverUser)
+  }
 
   const handleLogout = (e) => {
     logout()
     navigate('/')
-  };
-
-  var data = props.state;
+  }
 
   return (
     <section className="navbar--section">
@@ -46,8 +43,8 @@ const Navbar = (props) => {
                 <div
                   className={
                     sidebarOpen
-                      ? "menu-link-wrapper menu-link-wrapperone"
-                      : "menu-link-wrapper"
+                      ? 'menu-link-wrapper menu-link-wrapperone'
+                      : 'menu-link-wrapper'
                   }
                 >
                   <div className="menu-link">
@@ -64,25 +61,6 @@ const Navbar = (props) => {
             </Link>
             <div className="callIcon--section">
               <div className="callIcon--UserLog position-relative">
-                {/* <div className="callIcon--UserLogActive">
-                  <div>
-                    <p className="ActiveUsername">{data.email}</p>
-                    <ul className="ActiveUsernameUl">
-                      <li className="ActiveUsernameList">
-                        <span>Profile</span>
-                      </li>
-                      <li
-                        className="ActiveUsernameList"
-                        onClick={() => {
-                          logout();
-                        }}
-                      >
-                        <span>Logout</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div> */}
-
                 <p className="position-relative">
                   <span className="HomeCart--Login" onClick={handleUser}></span>
                 </p>
@@ -100,7 +78,8 @@ const Navbar = (props) => {
           </div>
         </div>
 
-        {sidebarOpen ? (
+        {sidebarOpen
+          ? (
           <div className="sidebar--Space">
             <span>
               <img src={logo} alt="logo" className="delicious--Sidebarimage" />
@@ -124,41 +103,41 @@ const Navbar = (props) => {
               <Link to="/cart">
                 <li className="sidebar--itemlist">My Cart</li>
               </Link>
-              <li
-                className="sidebar--itemlist"
-                onClick={handleLogout}
-              >
+              <li className="sidebar--itemlist" onClick={handleLogout}>
                 Logout
               </li>
             </ul>
           </div>
-        ) : (
+            )
+          : (
           <div className="sidebar--NoSpace"></div>
-        )}
+            )}
 
-        {sidebarOpen ? (
+        {sidebarOpen
+          ? (
           <div
             className="overlayWrapper"
             onClick={() => onSetSidebarOpen(false)}
           ></div>
-        ) : null}
+            )
+          : null}
       </div>
     </section>
-  );
-};
+  )
+}
 
 const mapStateToProps = (state) => {
   return {
     state,
-    item: state,
-  };
-};
+    item: state
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
     updateCartQuantity: (productId, quantity) =>
-      dispatch(updateCartQuantity(productId, quantity)),
-  };
-};
+      dispatch(updateCartQuantity(productId, quantity))
+  }
+}
 
-export default compose(connect(mapStateToProps, mapDispatchToProps))(Navbar);
+export default compose(connect(mapStateToProps, mapDispatchToProps))(Navbar)

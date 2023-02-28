@@ -5,4 +5,4 @@ const baseUrl = axios.create({
   // baseURL: 'https://spotless-gray-bandicoot.cyclic.app/users/'
 })
 
-export default baseUrl;
+export default baseUrl

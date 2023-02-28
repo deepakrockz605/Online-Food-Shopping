@@ -2,9 +2,9 @@ import React, { PureComponent } from 'react'
 import FootballLoader from '../../Common/FootballLoader'
 import { register } from '../../services/auth'
 import 'toastr/build/toastr.min.css'
-import logo from '../../Images/logo.svg';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import logo from '../../Images/logo.svg'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 class SignUp extends PureComponent {
   constructor (props) {
@@ -76,25 +76,25 @@ class SignUp extends PureComponent {
     let count = 0
     if (!fields.FirstName) {
       error.FirstName = 'FirstName cannot be empty!!'
-      toast.error(error.FirstName);
+      toast.error(error.FirstName)
       count = count + 1
     }
 
     if (!fields.LastName) {
       error.LastName = 'LastName cannot be empty!!'
-      toast.error(error.LastName);
+      toast.error(error.LastName)
       count = count + 1
     }
 
     if (!fields.UserName) {
       error.UserName = 'Username required!!'
-      toast.error(error.UserName);
+      toast.error(error.UserName)
       count = count + 1
     }
 
     if (!fields.Email) {
       error.Email = 'Email cannot be empty'
-      toast.error(error.Email);
+      toast.error(error.Email)
       count = count + 1
     }
 
@@ -112,7 +112,7 @@ class SignUp extends PureComponent {
         )
       ) {
         error.Email = 'Email is not valid'
-        toast.error(error.Email);
+        toast.error(error.Email)
         count = count + 1
       }
     }
@@ -120,24 +120,24 @@ class SignUp extends PureComponent {
     if (fields.Password !== '') {
       if (fields.Password.length - 1 <= 5) {
         error.Password = 'Password lenghth should be greater than 6!!'
-        toast.error(error.Password);
+        toast.error(error.Password)
         count = count + 1
       }
     } else {
       error.Password = 'Password cannot be empty!!'
-      toast.error(error.Password);
+      toast.error(error.Password)
       count = count + 1
     }
 
     if (fields.PasswordConfirm !== '') {
       if (fields.Password !== fields.PasswordConfirm) {
         error.PasswordConfirm = 'Password does not matched!!'
-        toast.error(error.PasswordConfirm);
+        toast.error(error.PasswordConfirm)
         count = count + 1
       }
     } else {
       error.PasswordConfirm = 'Confirm Password cannot be empty!!'
-      toast.error(error.PasswordConfirm);
+      toast.error(error.PasswordConfirm)
       count = count + 1
     }
 
@@ -151,15 +151,19 @@ class SignUp extends PureComponent {
     return (
       <div className="Home--Login Home--SignUp">
         <ToastContainer />
-        {this.state.isLoader ? (
+        {this.state.isLoader
+          ? (
           <div className="loader-resto">
             <div className="loader">
               <FootballLoader />
             </div>
           </div>
-        ) : null}
+            )
+          : null}
         <p className="subHeader">
-          <span className="subHeaderBlock"><img src={logo} alt="logo" style={{width: '100%'}} /></span>
+          <span className="subHeaderBlock">
+            <img src={logo} alt="logo" style={{ width: '100%' }} />
+          </span>
         </p>
         <form noValidate>
           <div className="form-group">

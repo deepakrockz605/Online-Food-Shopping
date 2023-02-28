@@ -1,98 +1,94 @@
-import React, { useState } from "react";
-import FootballLoader from "../../Common/FootballLoader";
-import { login } from "../../services/auth";
-import { useNavigate } from "react-router-dom";
-import "toastr/build/toastr.min.css";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import logo from "../../Images/logo.svg";
+import React, { useState } from 'react'
+import FootballLoader from '../../Common/FootballLoader'
+import { login } from '../../services/auth'
+import { useNavigate } from 'react-router-dom'
+import 'toastr/build/toastr.min.css'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import logo from '../../Images/logo.svg'
 
 const Login = (props) => {
-  const [UserName, setUserName] = useState("");
-  const [Password, setPassword] = useState("");
-  const [isLoader, setIsLoader] = useState(false);
-  const [isUser, setIsUser] = useState(true);
-  const [isHeader, setIsHeader] = useState(false);
-  const [errros, setErrros] = useState([]);
+  const [isLoader, setIsLoader] = useState(false)
+  const [isUser, setIsUser] = useState(true)
   const [formData, setFormData] = useState({
-    UserName: "",
-    Password: "",
-  });
+    UserName: '',
+    Password: ''
+  })
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleUserChange = (e) => {
-    setIsUser(false);
-    props.handleLoginType(isUser);
-  };
+    setIsUser(false)
+    props.handleLoginType(isUser)
+  }
 
   const handleChange = ({ target: { name, value } }) => {
-    setFormData({ ...formData, [name]: value });
-  };
+    setFormData({ ...formData, [name]: value })
+  }
 
   const handleErrors = (e) => {
-    const fields = formData;
-    const error = [];
-    let count = 0;
+    const fields = formData
+    const error = []
+    let count = 0
     if (!fields.UserName) {
-      error.UserName = "Username cannot be empty!!";
-      toast.error(error.UserName);
-      count = count + 1;
+      error.UserName = 'Username cannot be empty!!'
+      toast.error(error.UserName)
+      count = count + 1
     }
 
-    if (fields.Password !== "") {
+    if (fields.Password !== '') {
       if (fields.Password.length - 1 <= 5) {
-        error.Password = "Password lenghth should be greater than 6!!";
-        count = count + 1;
+        error.Password = 'Password lenghth should be greater than 6!!'
+        count = count + 1
       }
     } else {
-      error.Password = "Password cannot be empty!!";
-      toast.error(error.Password);
-      count = count + 1;
+      error.Password = 'Password cannot be empty!!'
+      toast.error(error.Password)
+      count = count + 1
     }
-    setErrros(error);
-    return { error, count };
-  };
+    return { error, count }
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const returnData = handleErrors(formData);
+    const returnData = handleErrors(formData)
     if (returnData.count <= 0) {
-      setIsLoader(true);
+      setIsLoader(true)
       const userDetail = {
         UserName: formData.UserName,
-        Password: formData.Password,
-      };
+        Password: formData.Password
+      }
       login(userDetail).then((res) => {
         console.log(res)
         if (res && res.success) {
-          toast.success(res.message);
-          setIsLoader(false);
-          setIsHeader(false);
-          props.onLoginStatusChange(true);
-          navigate("/dashboard");
+          toast.success(res.message)
+          setIsLoader(false)
+          props.onLoginStatusChange(true)
+          navigate('/dashboard')
         } else {
-          toast.error(res.message);
-          setIsLoader(false);
+          toast.error(res.message)
+          setIsLoader(false)
         }
-      });
+      })
     }
-  };
+  }
 
   return (
     <div className="Home--Login">
       <ToastContainer />
-      {isLoader ? (
+      {isLoader
+        ? (
         <div className="loader-resto">
           <div className="loader">
             <FootballLoader />
           </div>
         </div>
-      ) : null}
+          )
+        : null}
       <p className="subHeader">
         <span className="subHeaderBlock">
-          <img src={logo} alt="logo" style={{width: '100%'}} />
+          <img src={logo} alt="logo" style={{ width: '100%' }} />
         </span>
       </p>
       <form noValidate>
@@ -135,33 +131,25 @@ const Login = (props) => {
         <p className="SocialIcons--header">Login In With</p>
         <div className="socialMedia--box">
           <button className="google socioIcon">
-            <a>
-              <i className="fa fa-google-plus"></i>
-              {null}
-            </a>
+            <i className="fa fa-google-plus"></i>
+            {null}
           </button>
           <button className="facebook socioIcon">
-            <a>
-              <i className="fa fa-facebook"></i>
-              {null}
-            </a>
+            <i className="fa fa-facebook"></i>
+            {null}
           </button>
           <button className="instagram socioIcon">
-            <a>
-              <i className="fa fa-instagram"></i>
-              {null}
-            </a>
+            <i className="fa fa-instagram"></i>
+            {null}
           </button>
           <button className="twitter socioIcon">
-            <a>
-              <i className="fa fa-twitter"></i>
-              {null}
-            </a>
+            <i className="fa fa-twitter"></i>
+            {null}
           </button>
         </div>
         <div>
           <p className="newHere">
-            New to Here ?{" "}
+            New to Here ?{' '}
             <span className="createAccount" onClick={handleUserChange}>
               Create Account
             </span>
@@ -169,7 +157,7 @@ const Login = (props) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

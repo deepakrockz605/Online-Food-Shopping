@@ -1,15 +1,15 @@
-import React from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { connect } from "react-redux";
-import { Carousel } from "react-responsive-carousel";
-import dine from "../Images/dine.svg"
-import hygiene from "../Images/hygiene.svg"
-import takeAway from "../Images/takeAway.svg"
+import React from 'react'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import { connect } from 'react-redux'
+import { Carousel } from 'react-responsive-carousel'
+import dine from '../Images/dine.svg'
+import hygiene from '../Images/hygiene.svg'
+import takeAway from '../Images/takeAway.svg'
 
-var _ = require("lodash");
+const _ = require('lodash')
 
 const Home = (props) => {
-  var list = _.filter(props.Carousalitems);
+  const list = _.filter(props.Carousalitems)
   return (
     <div>
       <Carousel
@@ -32,19 +32,21 @@ const Home = (props) => {
                 <div className="flex paddling-top-30 locateLocation--box">
                   <p
                     className="orderOnlineHome background-primary-yellow border-primary-yellow color-ffffff paddling-top-10 paddling-bottom-10 paddling-left-30 paddling-right-30 learn__more"
-                    style={{ cursor: "pointer" }}
+                    style={{ cursor: 'pointer' }}
                   >
                     {index.orderOnline}
                   </p>
-                  {index.locate ? (
+                  {index.locate
+                    ? (
                     <p
                       className="border-primary-yellow color-2e2e2e paddling-top-10 paddling-bottom-10 paddling-left-40 paddling-right-40 locate--location"
-                      style={{ cursor: "pointer" }}
+                      style={{ cursor: 'pointer' }}
                     >
                       <i className="fa fa-map-marker" aria-hidden="true"></i>
                       <span className="paddling-left-10">{index.locate}</span>
                     </p>
-                  ) : null}
+                      )
+                    : null}
                 </div>
 
                 <div className="flex justify-content-space-between dine--sections paddling-top-30 paddling-bottom-30">
@@ -72,11 +74,7 @@ const Home = (props) => {
                     <div className="subBox--inner">
                       <p className="flex align-items-center lineHeightHeader">
                         <span className="paddling-right-10">
-                          <img
-                            src={dine}
-                            alt="Dine"
-                            className="imghygine"
-                          />
+                          <img src={dine} alt="Dine" className="imghygine" />
                         </span>
                         <span className="font-22 color-2e2e2e open_sanssemibold carousal--subHeader">
                           {index.FineDineHeader}
@@ -122,13 +120,13 @@ const Home = (props) => {
         ))}
       </Carousel>
     </div>
-  );
-};
+  )
+}
 
 const mapStateToProps = (state) => {
   return {
-    Carousalitems: state.Carousalitems,
-  };
-};
+    Carousalitems: state.Carousalitems
+  }
+}
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(Home)
