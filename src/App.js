@@ -7,7 +7,7 @@ import './style/animate.css'
 import './style/oswald.css'
 import './style/vibes.css'
 
-function App () {
+const App = () => {
   return (
     <Layout>
       <Root />

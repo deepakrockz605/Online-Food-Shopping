@@ -543,8 +543,8 @@ const MyCart = (props) => {
 const mapStateToProps = (state) => {
   return {
     state,
-    items: state.addedItems,
-    adData: state
+    items: state.cartReducer.addedItems,
+    adData: state.cartReducer
   }
 }
 

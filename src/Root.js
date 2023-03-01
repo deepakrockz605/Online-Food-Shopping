@@ -8,11 +8,18 @@ import ThankYou from './Components/ThankYou'
 import HomeLogin from './Components/Login/HomeLogin'
 import PageNotFound from './Components/PageNotFound'
 import PrivateRoute from './Common/PrivateRoute'
+import PublicRoute from './Common/PublicRoute'
 
 const Root = () => {
   return (
     <Routes>
-      <Route path="/" element={<HomeLogin isAuthenticated={false} />} />
+      <Route path="/"
+        element={
+          <PublicRoute>
+            <HomeLogin />
+          </PublicRoute>
+        }
+      />
       <Route
         path="/dashboard"
         element={

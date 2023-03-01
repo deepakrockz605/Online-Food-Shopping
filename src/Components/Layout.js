@@ -1,27 +1,17 @@
-import React, { useState } from 'react'
-import FixedContent from './FixedContent'
+import React from 'react'
 import { connect } from 'react-redux'
 
-const Layout = (props) => {
-  const [isOpen, setIsopen] = useState(false)
-
-  const handleNavbar = async (open) => {
-    setIsopen(open)
-  }
-
-  const loggedInUser = localStorage.getItem('usertoken')
-
+const Layout = ({ children, sidebarOpen }) => {
   return (
-    <div className={isOpen ? 'mainWrapper' : ''}>
-      {loggedInUser && <FixedContent NavbarstatusPass={handleNavbar} />}
-      <div className="corporate-wrapper">{props.children}</div>
+    <div className={sidebarOpen ? 'mainWrapper' : ''}>
+      <div className="corporate-wrapper">{children}</div>
     </div>
   )
 }
 
 const mapStateToProps = (state) => {
   return {
-    isUserLoggedIn: state.isUserLoggedIn
+    sidebarOpen: state.cartReducer.sidebarOpen
   }
 }
 

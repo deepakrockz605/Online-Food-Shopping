@@ -1,23 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Slider from './Slider'
 import Login from './Login'
 import SignUp from './SignUp'
 import { connect } from 'react-redux'
 import { onLoginStatusChange } from '../../actions/cartActions'
 import './HomeLogin.scss'
-import { useNavigate } from 'react-router-dom'
 
 const HomeLogin = (props) => {
-  const navigate = useNavigate()
   const [isLogin, setIsLogin] = useState(false)
-
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem('usertoken')
-    if (loggedInUser) {
-      navigate(-1)
-    }
-  })
-
   const handleUserLogin = (langValue) => {
     setIsLogin(langValue)
   }

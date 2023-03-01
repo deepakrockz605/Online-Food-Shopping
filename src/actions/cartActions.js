@@ -9,7 +9,8 @@ import {
   LOG_OUT,
   REGISTER,
   LOADER_UPDATE,
-  UPDATE_HEADER
+  UPDATE_HEADER,
+  UPDATE_SIDEBAR_OPEN_STATUS
 } from './action-types/cart-actions'
 
 // add cart action
@@ -94,9 +95,15 @@ export const onLoaderOn = (loader) => {
 }
 
 export const onLoginStatusChange = (isUserLoggedIn) => {
-  console.log(isUserLoggedIn)
   return {
     type: UPDATE_HEADER,
     isUserLoggedIn
+  }
+}
+
+export const setSidebarOpen = (value) => {
+  return {
+    type: UPDATE_SIDEBAR_OPEN_STATUS,
+    value
   }
 }

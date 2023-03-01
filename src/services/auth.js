@@ -8,10 +8,13 @@ const config = {
   }
 }
 
+// const baseURL = 'https://spotless-gray-bandicoot.cyclic.app/users'
+const baseURL = 'http://localhost:5000/users'
+
 export const register = async (newUser) => {
   return axios
     .post(
-      'https://spotless-gray-bandicoot.cyclic.app/users/register',
+      `${baseURL}/register`,
       {
         firstname: newUser.FirstName,
         lastname: newUser.LastName,
@@ -32,7 +35,7 @@ export const register = async (newUser) => {
 export const login = async (user) => {
   return axios
     .post(
-      'https://spotless-gray-bandicoot.cyclic.app//users/login',
+      `${baseURL}/login`,
       {
         username: user.UserName,
         password: user.Password

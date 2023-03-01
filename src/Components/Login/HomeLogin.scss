@@ -228,14 +228,13 @@ label {
   border: none;
   box-shadow: none;
   outline: none !important;
-  width: 25%;
+  width: 40px;
   border: 1px solid #000;
-  margin: 0 5px;
+  margin: 0 10px;
   border-radius: 5px;
 }
 .socialMedia--box {
-  display: flex;
-  justify-content: space-evenly;
+  text-align: center;
   max-width: 400px;
   margin: 0 auto;
   padding: 0px 0 20px;
@@ -364,7 +363,7 @@ label {
     }
     .HomeLogin--box {
       max-width: 100%;
-      background: #be9800;
+      background: #fff;
       transform: translateX(0%);
       .Home--Login {
         .subHeader {
@@ -386,15 +385,15 @@ label {
             color: #ec5555;
           }
           .submitBtn {
-            border: 1px solid gray;
-            background: #fff;
-            color: #000;
+            border: 1px solid #04b998;
+            background: #04b998;
+            color: #fff;
           }
           .userLable {
-            color: #ccc;
+            color: #04b998;
           }
           .userLableInput {
-            color: #fff;
+            color: #000;
             height: auto !important;
           }
         }
@@ -404,14 +403,14 @@ label {
           }
         }
         .newHere {
-          color: rgba(247, 231, 38, 0.9215686274509803);
+          color: #db4a39;
           .createAccount {
-            color: #fff;
+            color: #04b998;
           }
         }
         .orData,
         .SocialIcons--header {
-          color: #fff;
+          color: #050505;
         }
       }
       .Home--SignUp {

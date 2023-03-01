@@ -150,7 +150,7 @@ const OurStory = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    storydata: state.Storytems
+    storydata: state.cartReducer.Storytems
   }
 }
 

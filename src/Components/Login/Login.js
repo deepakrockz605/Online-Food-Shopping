@@ -6,6 +6,9 @@ import 'toastr/build/toastr.min.css'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import logo from '../../Images/logo.svg'
+import { setUserData } from '../../actions/userAction'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
 
 const Login = (props) => {
   const [isLoader, setIsLoader] = useState(false)
@@ -60,10 +63,10 @@ const Login = (props) => {
         Password: formData.Password
       }
       login(userDetail).then((res) => {
-        console.log(res)
         if (res && res.success) {
           toast.success(res.message)
           setIsLoader(false)
+          setUserData(res.userData)
           props.onLoginStatusChange(true)
           navigate('/dashboard')
         } else {
@@ -160,4 +163,10 @@ const Login = (props) => {
   )
 }
 
-export default Login
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setUserData: (userData) => dispatch(setUserData(userData))
+  }
+}
+
+export default compose(connect(null, mapDispatchToProps))(Login)

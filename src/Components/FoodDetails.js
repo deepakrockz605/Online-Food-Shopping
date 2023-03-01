@@ -144,7 +144,7 @@ const FoodDetails = ({
 
 const mapStateToProps = (state) => {
   return {
-    items: state.addedItems
+    items: state.cartReducer.addedItems
   }
 }
 

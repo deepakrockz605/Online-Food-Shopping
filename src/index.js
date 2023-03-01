@@ -6,17 +6,18 @@ import reportWebVitals from './reportWebVitals'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { BrowserRouter as Router } from 'react-router-dom'
-import cartReducer from './reducers/cartReducer'
+// import cartReducer from './reducers/cartReducer'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { createBrowserHistory } from 'history'
+import store from './store'
 
-const store = createStore(cartReducer)
+const storeData = createStore(store)
 const history = createBrowserHistory()
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <Router history={history}>
-    <Provider store={store}>
+    <Provider store={storeData}>
       <App />
     </Provider>
   </Router>

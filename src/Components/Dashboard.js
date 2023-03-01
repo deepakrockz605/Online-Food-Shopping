@@ -188,8 +188,8 @@ const Dashboard = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    Lunchitems: state.Lunchitems,
-    Baritems: state.Baritems
+    Lunchitems: state.cartReducer.Lunchitems,
+    Baritems: state.cartReducer.Baritems
   }
 }
 

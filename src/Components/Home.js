@@ -125,7 +125,7 @@ const Home = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    Carousalitems: state.Carousalitems
+    Carousalitems: state.cartReducer.Carousalitems
   }
 }
 

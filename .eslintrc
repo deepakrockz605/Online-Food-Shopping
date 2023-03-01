@@ -22,7 +22,8 @@
     ],
     "rules": {
         "react/prop-types": 0,
-        "multiline-ternary": 0
+        "multiline-ternary": 0,
+        "camelcase": "off"
     },
 
     "settings": {

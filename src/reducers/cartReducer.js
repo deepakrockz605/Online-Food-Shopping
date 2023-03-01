@@ -13,7 +13,8 @@ import {
   LOG_OUT,
   REGISTER,
   LOADER_UPDATE,
-  UPDATE_HEADER
+  UPDATE_HEADER,
+  UPDATE_SIDEBAR_OPEN_STATUS
 } from '../actions/action-types/cart-actions'
 
 const _ = require('lodash')
@@ -35,7 +36,8 @@ const initState = {
   password: '',
   navUser: false,
   userData: {},
-  isUserLoggedIn: false
+  isUserLoggedIn: false,
+  sidebarOpen: false
 }
 
 const cartReducer = (state = initState, action) => {
@@ -235,6 +237,13 @@ const cartReducer = (state = initState, action) => {
     return {
       ...state,
       isUserLoggedIn: action.isUserLoggedIn
+    }
+  }
+
+  if (action.type === UPDATE_SIDEBAR_OPEN_STATUS) {
+    return {
+      ...state,
+      sidebarOpen: action.value
     }
   }
 

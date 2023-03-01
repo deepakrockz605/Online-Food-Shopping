@@ -1,29 +1,22 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { updateCartQuantity } from '../actions/cartActions'
+import { updateCartQuantity, setSidebarOpen } from '../actions/cartActions'
 import { compose } from 'redux'
 import logo from '../Images/logo.svg'
 import { logout } from '../services/auth'
 
-const Navbar = (props) => {
+const Navbar = ({ sidebarOpen, item, updateCartQuantity, setSidebarOpen }) => {
   const navigate = useNavigate()
-  const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [hoverUser, setHoverUser] = useState(false)
 
   const onSetSidebarOpen = (open) => {
     setSidebarOpen(!sidebarOpen)
-    props.Navbarstatus(open)
   }
 
   useEffect(() => {
-    props.updateCartQuantity(props.item.addedItems.foodMenuID)
+    updateCartQuantity(item.foodMenuID)
     // // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  const handleUser = (e) => {
-    setHoverUser(!hoverUser)
-  }
 
   const handleLogout = (e) => {
     logout()
@@ -62,7 +55,8 @@ const Navbar = (props) => {
             <div className="callIcon--section">
               <div className="callIcon--UserLog position-relative">
                 <p className="position-relative">
-                  <span className="HomeCart--Login" onClick={handleUser}></span>
+                  {/* <span className="HomeCart--Login" onClick={handleUser}></span> */}
+                  <span className="HomeCart--Login"></span>
                 </p>
               </div>
 
@@ -70,7 +64,7 @@ const Navbar = (props) => {
                 <p className="position-relative">
                   <span className="HomeCart--icon"></span>
                   <span className="cartCount">
-                    {props.item.addedItems.length}
+                    {item.length}
                   </span>
                 </p>
               </Link>
@@ -128,15 +122,16 @@ const Navbar = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    state,
-    item: state
+    item: state.cartReducer.addedItems,
+    sidebarOpen: state.cartReducer.sidebarOpen
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     updateCartQuantity: (productId, quantity) =>
-      dispatch(updateCartQuantity(productId, quantity))
+      dispatch(updateCartQuantity(productId, quantity)),
+    setSidebarOpen: (value) => dispatch(setSidebarOpen(value))
   }
 }
 
