@@ -4,11 +4,6 @@ import {
   SUB_QUANTITY,
   ADD_QUANTITY,
   UPDATE_CART_ICON,
-  SIGN_UP,
-  LOG_IN,
-  LOG_OUT,
-  REGISTER,
-  LOADER_UPDATE,
   UPDATE_HEADER,
   UPDATE_SIDEBAR_OPEN_STATUS
 } from './action-types/cart-actions'
@@ -42,41 +37,6 @@ export const addQuantity = (id) => {
   }
 }
 
-// send login data across all pages
-export const onSendLoginUser = (id) => {
-  // debugger;
-  return {
-    type: SIGN_UP,
-    id
-  }
-}
-
-// send Register data across all pages
-export const onLoggedIn = (payload, id) => {
-  // debugger
-  return {
-    type: LOG_IN,
-    payload,
-    id
-  }
-}
-
-// send Register data across all pages
-export const onSendRegisterUser = (payload) => {
-  return {
-    type: REGISTER,
-    payload
-  }
-}
-
-// send Register data across all pages
-export const logOut = (payload) => {
-  return {
-    type: LOG_OUT,
-    payload
-  }
-}
-
 export const updateCartQuantity = (productId, quantity) => {
   return {
     type: UPDATE_CART_ICON,
@@ -84,13 +44,6 @@ export const updateCartQuantity = (productId, quantity) => {
       productId,
       quantity
     }
-  }
-}
-
-export const onLoaderOn = (loader) => {
-  return {
-    type: LOADER_UPDATE,
-    payload: loader
   }
 }
 

@@ -77,6 +77,10 @@ const Login = (props) => {
     }
   }
 
+  const handleForgotPassword = () => {
+    props.handleForgotPassword(true)
+  }
+
   return (
     <div className="Home--Login">
       <ToastContainer />
@@ -123,6 +127,7 @@ const Login = (props) => {
             required
           />
         </div>
+        <span className='forgot-password' onClick={handleForgotPassword}>Forgot Password?</span>
         <button className="submitBtn" onClick={handleSubmit}>
           Login
         </button>

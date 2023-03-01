@@ -1,10 +1,13 @@
 import axios from 'axios'
 
-const config = {
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Credentials': true,
-    'Content-Type': 'application/json'
+const config = (token) => {
+  return {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': true,
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    }
   }
 }
 
@@ -22,7 +25,7 @@ export const register = async (newUser) => {
         email: newUser.Email,
         password: newUser.Password
       },
-      config
+      config()
     )
     .then((res) => {
       return res
@@ -40,10 +43,47 @@ export const login = async (user) => {
         username: user.UserName,
         password: user.Password
       },
-      config
+      config()
     )
     .then((res) => {
       localStorage.setItem('usertoken', res.data.token)
+      return res.data
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+export const passwordReset = async (newUser) => {
+  return axios
+    .post(
+      `${baseURL}/reset-password`,
+      {
+        email: newUser.Email
+      },
+      config()
+    )
+    .then((res) => {
+      localStorage.setItem('resetToken', res.data.token)
+      return res.data
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+export const passwordUpdate = async (userDetails, token) => {
+  return axios
+    .post(
+      `${baseURL}/update-password`,
+      {
+        password: userDetails.Password,
+        userId: userDetails.userId
+      },
+      config(token)
+    )
+    .then((res) => {
+      localStorage.clear()
       return res.data
     })
     .catch((err) => {

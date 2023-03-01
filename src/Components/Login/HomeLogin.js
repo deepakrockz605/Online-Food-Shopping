@@ -2,14 +2,22 @@ import React, { useState } from 'react'
 import Slider from './Slider'
 import Login from './Login'
 import SignUp from './SignUp'
+import PasswordReset from './PasswordReset'
 import { connect } from 'react-redux'
 import { onLoginStatusChange } from '../../actions/cartActions'
 import './HomeLogin.scss'
 
 const HomeLogin = (props) => {
   const [isLogin, setIsLogin] = useState(false)
+  const [isPasswordReset, setIsPasswordReset] = useState(false)
+
   const handleUserLogin = (langValue) => {
     setIsLogin(langValue)
+    setIsPasswordReset(false)
+  }
+
+  const handleForgotPassword = (value) => {
+    setIsPasswordReset(value)
   }
 
   const onLoginStatusChange = (value) => {
@@ -30,16 +38,26 @@ const HomeLogin = (props) => {
           'HomeLogin--box ' + (isLogin ? 'HomeLogin--box--RowWrapper' : '')
         }
       >
-        {isLogin
+        {isPasswordReset
           ? (
-          <SignUp handleLoginType={handleUserLogin} />
+              <PasswordReset handleLoginType={handleUserLogin} handleForgotPassword={handleForgotPassword} />
             )
           : (
-          <Login
-            handleLoginType={handleUserLogin}
-            onLoginStatusChange={onLoginStatusChange}
-          />
-            )}
+          <>
+          {isLogin
+            ? (
+                <SignUp handleLoginType={handleUserLogin} />
+              )
+            : (
+                <Login
+                  handleLoginType={handleUserLogin}
+                  onLoginStatusChange={onLoginStatusChange}
+                  handleForgotPassword={handleForgotPassword}
+                />
+              )}
+              </>
+            )
+        }
       </div>
     </div>
   )

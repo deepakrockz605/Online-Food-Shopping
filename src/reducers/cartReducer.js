@@ -8,11 +8,6 @@ import {
   SUB_QUANTITY,
   ADD_QUANTITY,
   UPDATE_CART_ICON,
-  SIGN_UP,
-  LOG_IN,
-  LOG_OUT,
-  REGISTER,
-  LOADER_UPDATE,
   UPDATE_HEADER,
   UPDATE_SIDEBAR_OPEN_STATUS
 } from '../actions/action-types/cart-actions'
@@ -30,12 +25,6 @@ const initState = {
   shippingCharge: 25,
   restaurentCharges: 25,
   deliveryCharges: 20,
-  isRegister: false,
-  isLoggedIn: false,
-  email: '',
-  password: '',
-  navUser: false,
-  userData: {},
   isUserLoggedIn: false,
   sidebarOpen: false
 }
@@ -44,8 +33,6 @@ const cartReducer = (state = initState, action) => {
   state = state || initState
   let newTotal = state.subTotal
 
-  // let cart = state.cart;
-  // debugger
   if (action.type === ADD_TO_CART) {
     let addedItem = []
 
@@ -60,7 +47,6 @@ const cartReducer = (state = initState, action) => {
         addedItem.quantity = 1
         addedItem.foodProductTotal = Number(addedItem.foodMenuProductPrice)
         newTotal = newTotal + addedItem.foodProductTotal
-        // console.log(newTotal)
         state.addedItems.push(addedItem)
       } else {
         state.addedItems[item].foodProductTotal =
@@ -69,7 +55,6 @@ const cartReducer = (state = initState, action) => {
         state.addedItems[item].quantity += 1
         newTotal =
           newTotal + Number(state.addedItems[item].foodMenuProductPrice)
-        //    console.log(newTotal)
       }
     } else {
       addedItem = state.Lunchitems.find(
@@ -78,7 +63,6 @@ const cartReducer = (state = initState, action) => {
       addedItem.quantity = 1
       addedItem.foodProductTotal = Number(addedItem.foodMenuProductPrice)
       newTotal = newTotal + Number(addedItem.foodMenuProductPrice)
-      // console.log(newTotal)
       state.addedItems.push(addedItem)
     }
 
@@ -98,7 +82,6 @@ const cartReducer = (state = initState, action) => {
       addedItem.foodProductTotal =
         Number(addedItem.foodMenuProductPrice) * addedItem.quantity
       newTotal = newTotal + Number(addedItem.foodMenuProductPrice)
-      //  console.log(newTotal)
       return {
         ...state,
         addedItems: state.addedItems,
@@ -114,8 +97,6 @@ const cartReducer = (state = initState, action) => {
       (Lunchitems) => Lunchitems.foodMenuID === action.id
     )
     if (addedItem.quantity === 1) {
-      // alert('Maximum Quantity Limit Exceeded')
-
       const newItems = _.filter(state.addedItems, function (o) {
         return o.foodMenuID !== action.id
       })
@@ -123,7 +104,6 @@ const cartReducer = (state = initState, action) => {
       addedItem.foodProductTotal =
         addedItem.foodProductTotal - Number(addedItem.foodMenuProductPrice)
       newTotal = newTotal - Number(addedItem.foodMenuProductPrice)
-      // console.log(newTotal)
 
       return {
         ...state,
@@ -135,7 +115,6 @@ const cartReducer = (state = initState, action) => {
       addedItem.foodProductTotal =
         addedItem.foodProductTotal - Number(addedItem.foodMenuProductPrice)
       newTotal = newTotal - Number(addedItem.foodMenuProductPrice)
-      // console.log(newTotal)
       return {
         ...state,
         addedItems: state.addedItems,
@@ -179,60 +158,6 @@ const cartReducer = (state = initState, action) => {
     }
   }
 
-  if (action.type === SIGN_UP) {
-    if (action.id) {
-      state.isRegister = true
-    } else {
-      state.isRegister = false
-    }
-
-    return {
-      ...state
-    }
-  }
-
-  if (action.type === LOG_IN) {
-    if (action.id) {
-      state.isLoggedIn = true
-      state.email = action.payload.email
-      state.password = action.payload.password
-      state.navUser = true
-    }
-
-    return {
-      ...state
-    }
-  }
-
-  if (action.type === LOG_OUT) {
-    state.isLoggedIn = false
-    return {
-      ...state
-    }
-  }
-
-  if (action.type === REGISTER) {
-    state.userData.first_name = action.payload.first_name
-    state.userData.last_name = action.payload.last_name
-    state.userData.email = action.payload.email
-    state.userData.password = action.payload.password
-
-    if (
-      state.userData.first_name === '' ||
-      state.userData.last_name === '' ||
-      state.userData.email === '' ||
-      state.userData.password === ''
-    ) {
-      state.isRegister = true
-    } else {
-      state.isRegister = false
-    }
-
-    return {
-      ...state
-    }
-  }
-
   if (action.type === UPDATE_HEADER) {
     return {
       ...state,
@@ -245,10 +170,6 @@ const cartReducer = (state = initState, action) => {
       ...state,
       sidebarOpen: action.value
     }
-  }
-
-  if (action.type === LOADER_UPDATE) {
-    console.log(['loader'])
   } else {
     return state
   }
