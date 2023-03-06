@@ -151,9 +151,8 @@ class Card extends Component {
               onClick={() => onCardElementClick('cardNumber')}
             >
               <TransitionGroup className="slide-fade-up" component="div">
-                {cardNumber
-                  ? (
-                      cardNumberArr.map((val, index) => (
+                {cardNumber ? (
+                  cardNumberArr.map((val, index) => (
                     <CSSTransition
                       classNames="slide-fade-up"
                       timeout={250}
@@ -161,13 +160,12 @@ class Card extends Component {
                     >
                       <div className="card-item__numberItem">{val}</div>
                     </CSSTransition>
-                      ))
-                    )
-                  : (
+                  ))
+                ) : (
                   <CSSTransition classNames="slide-fade-up" timeout={250}>
                     <div className="card-item__numberItem">#</div>
                   </CSSTransition>
-                    )}
+                )}
               </TransitionGroup>
             </label>
             <div className="card-item__content">
@@ -179,14 +177,12 @@ class Card extends Component {
                 <div className="card-item__holder">Card Holder</div>
                 <div className="card-item__name">
                   <TransitionGroup className="slide-fade-up" component="div">
-                    {cardHolder === 'FULL NAME'
-                      ? (
+                    {cardHolder === 'FULL NAME' ? (
                       <CSSTransition classNames="slide-fade-up" timeout={250}>
                         <div>FULL NAME</div>
                       </CSSTransition>
-                        )
-                      : (
-                          cardHolderArr.map((val, index) => (
+                    ) : (
+                      cardHolderArr.map((val, index) => (
                         <CSSTransition
                           timeout={250}
                           classNames="slide-fade-right"
@@ -194,8 +190,8 @@ class Card extends Component {
                         >
                           <span className="card-item__nameItem">{val}</span>
                         </CSSTransition>
-                          ))
-                        )}
+                      ))
+                    )}
                   </TransitionGroup>
                 </div>
               </label>
@@ -207,8 +203,7 @@ class Card extends Component {
                 <label className="card-item__dateTitle">Expires</label>
                 <label className="card-item__dateItem">
                   <SwitchTransition in-out>
-                    {!cardMonth
-                      ? (
+                    {!cardMonth ? (
                       <CSSTransition
                         classNames="slide-fade-up"
                         timeout={250}
@@ -216,8 +211,7 @@ class Card extends Component {
                       >
                         <span>MM</span>
                       </CSSTransition>
-                        )
-                      : (
+                    ) : (
                       <CSSTransition
                         classNames="slide-fade-up"
                         timeout={250}
@@ -225,14 +219,13 @@ class Card extends Component {
                       >
                         <span>{cardMonth}</span>
                       </CSSTransition>
-                        )}
+                    )}
                   </SwitchTransition>
                 </label>
                 /
                 <label htmlFor="cardYear" className="card-item__dateItem">
                   <SwitchTransition out-in>
-                    {!cardYear
-                      ? (
+                    {!cardYear ? (
                       <CSSTransition
                         classNames="slide-fade-up"
                         timeout={250}
@@ -240,8 +233,7 @@ class Card extends Component {
                       >
                         <span>YY</span>
                       </CSSTransition>
-                        )
-                      : (
+                    ) : (
                       <CSSTransition
                         classNames="slide-fade-up"
                         timeout={250}
@@ -249,7 +241,7 @@ class Card extends Component {
                       >
                         <span>{cardYear.toString().substr(-2)}</span>
                       </CSSTransition>
-                        )}
+                    )}
                   </SwitchTransition>
                 </label>
               </div>

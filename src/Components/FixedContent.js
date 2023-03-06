@@ -1,12 +1,12 @@
 import React from 'react'
 import Navbar from './Navbar'
 
-const FixedContent = (props) => {
+const FixedContent = ({ userData }) => {
   return (
     <div className="InnerWrapper">
       <div className="container-Home">
         <div className="sse">
-          <Navbar />
+          <Navbar userData={userData} />
         </div>
         <div></div>
       </div>

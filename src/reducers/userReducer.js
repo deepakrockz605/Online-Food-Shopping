@@ -7,7 +7,6 @@ const initState = {
 const userReducer = (state = initState, action) => {
   state = state || initState
   if (action.type === LOGIN_USER_DATA) {
-    console.log(action.userData)
     return {
       ...state,
       userData: action.userData

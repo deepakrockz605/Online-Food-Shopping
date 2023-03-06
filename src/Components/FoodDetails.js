@@ -64,8 +64,7 @@ const FoodDetails = ({
 
   return (
     <div>
-      {showPopup
-        ? (
+      {showPopup ? (
         <div className="foodDetails--popUp" key={keyx} id={keyx}>
           <div className="foodDetails--Main">
             <div className="foodcart--Image">
@@ -85,8 +84,7 @@ const FoodDetails = ({
 
               <div>
                 <div>
-                  {id === 'half'
-                    ? (
+                  {id === 'half' ? (
                     <p className="addedAmount">
                       <sup>
                         <i className="fa fa-inr" aria-hidden="true"></i>
@@ -94,8 +92,7 @@ const FoodDetails = ({
                       <span style={{ paddingLeft: '3px' }}>{productPrice}</span>
                       /-
                     </p>
-                      )
-                    : (
+                  ) : (
                     <p className="addedAmount">
                       <sup>
                         <i className="fa fa-inr" aria-hidden="true"></i>
@@ -103,7 +100,7 @@ const FoodDetails = ({
                       <span style={{ paddingLeft: '3px' }}>{productPrice}</span>
                       /-
                     </p>
-                      )}
+                  )}
                 </div>
 
                 <div className="foodDetails--cartButton">
@@ -136,8 +133,7 @@ const FoodDetails = ({
             onClick={handlePopStatus}
           ></div>
         </div>
-          )
-        : null}
+      ) : null}
     </div>
   )
 }

@@ -68,7 +68,9 @@ const Login = (props) => {
           setIsLoader(false)
           setUserData(res.userData)
           props.onLoginStatusChange(true)
-          navigate('/dashboard')
+          res.userData.Role === 'Admin'
+            ? navigate('/admin/dashboard')
+            : navigate('/dashboard')
         } else {
           toast.error(res.message)
           setIsLoader(false)
@@ -84,18 +86,16 @@ const Login = (props) => {
   return (
     <div className="Home--Login">
       <ToastContainer />
-      {isLoader
-        ? (
+      {isLoader ? (
         <div className="loader-resto">
           <div className="loader">
             <FootballLoader />
           </div>
         </div>
-          )
-        : null}
+      ) : null}
       <p className="subHeader">
         <span className="subHeaderBlock">
-          <img src={logo} alt="logo" style={{ width: '100%' }} />
+          <img src={logo} alt="logo" style={{ maxWidth: '80%' }} />
         </span>
       </p>
       <form noValidate>
@@ -127,7 +127,9 @@ const Login = (props) => {
             required
           />
         </div>
-        <span className='forgot-password' onClick={handleForgotPassword}>Forgot Password?</span>
+        <span className="forgot-password" onClick={handleForgotPassword}>
+          Forgot Password?
+        </span>
         <button className="submitBtn" onClick={handleSubmit}>
           Login
         </button>

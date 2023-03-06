@@ -5,7 +5,6 @@ const AuthVerifyComponent = ({ token }) => {
   useEffect(() => {
     setInterval(() => {
       if (jwt_decode(token).exp < Date.now() / 1000) {
-        alert('Session Expired')
         localStorage.clear()
         window.location.reload('/')
       }

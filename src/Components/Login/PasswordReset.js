@@ -117,83 +117,80 @@ const PasswordReset = (props) => {
   return (
     <div className="Home--Login">
       <ToastContainer />
-      {isLoader
-        ? (
+      {isLoader ? (
         <div className="loader-resto">
           <div className="loader">
             <FootballLoader />
           </div>
         </div>
-          )
-        : null}
+      ) : null}
       <p className="subHeader">
         <span className="subHeaderBlock">
-          <img src={logo} alt="logo" style={{ width: '100%' }} />
+          <img src={logo} alt="logo" style={{ maxWidth: '80%' }} />
         </span>
       </p>
       <form noValidate>
-        {isPasswordReset
-          ? <>
-          <div className="form-group">
-            <label className="userLable" id="PasswordLabel">
-              Password
-            </label>
-            <input
-              className="form-control userLableInput"
-              type="password"
-              name="Password"
-              value={formData.Password}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label className="userLable" id="PasswordConfirmLabel">
-              Confirm Password
-            </label>
-            <input
-              className="form-control userLableInput"
-              type="password"
-              name="PasswordConfirm"
-              value={formData.PasswordConfirm}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          </>
-          : (
+        {isPasswordReset ? (
+          <>
             <div className="form-group">
-              <label className="userLable" id="EmailLabel">
-                Email
+              <label className="userLable" id="PasswordLabel">
+                Password
               </label>
               <input
                 className="form-control userLableInput"
-                type="email"
-                name="Email"
-                autoComplete="off"
-                value={formData.Email}
+                type="password"
+                name="Password"
+                value={formData.Password}
                 onChange={handleChange}
                 required
               />
             </div>
-            )
-        }
+
+            <div className="form-group">
+              <label className="userLable" id="PasswordConfirmLabel">
+                Confirm Password
+              </label>
+              <input
+                className="form-control userLableInput"
+                type="password"
+                name="PasswordConfirm"
+                value={formData.PasswordConfirm}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </>
+        ) : (
+          <div className="form-group">
+            <label className="userLable" id="EmailLabel">
+              Email
+            </label>
+            <input
+              className="form-control userLableInput"
+              type="email"
+              name="Email"
+              autoComplete="off"
+              value={formData.Email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        )}
         <button className="submitBtn" onClick={handleSubmit}>
-          {isPasswordReset ? 'Update Password' : 'Reset Password' }
+          {isPasswordReset ? 'Update Password' : 'Reset Password'}
         </button>
       </form>
 
       <p className="orData">OR</p>
 
       <div className="SocialIcons">
-          <p className="newHere" style={{ marginTop: '10px !important' }}>
-            Already have an account ?{' '}
-            <span className="createAccount" onClick={handleUserChange}>
-              Login
-            </span>
-          </p>
-        </div>
+        <p className="newHere" style={{ marginTop: '10px !important' }}>
+          Already have an account ?{' '}
+          <span className="createAccount" onClick={handleUserChange}>
+            Login
+          </span>
+        </p>
+      </div>
     </div>
   )
 }

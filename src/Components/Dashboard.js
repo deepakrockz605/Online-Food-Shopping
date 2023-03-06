@@ -51,9 +51,9 @@ const Dashboard = (props) => {
             <div>
               <p className="story--paraInfo">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book.
+                industry. Lorem Ipsum has been the industry standard dummy text
+                ever since the 1500s, when an unknown printer took a galley of
+                type and scrambled it to make a type specimen book.
               </p>
             </div>
 
@@ -73,8 +73,7 @@ const Dashboard = (props) => {
                         className="food--cardIcon"
                         onClick={togglePopup}
                       />
-                      {showPopup && index.foodMenuID === id
-                        ? (
+                      {showPopup && index.foodMenuID === id ? (
                         <FoodDetails
                           showPopup={showPopup}
                           data={index}
@@ -83,8 +82,7 @@ const Dashboard = (props) => {
                           continueOrder={continueOrder}
                           history={props.history}
                         />
-                          )
-                        : null}
+                      ) : null}
                     </div>
 
                     <div>
@@ -152,9 +150,9 @@ const Dashboard = (props) => {
             <div>
               <p className="story--paraInfo">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book.
+                industry. Lorem Ipsum has been the industry standard dummy text
+                ever since the 1500s, when an unknown printer took a galley of
+                type and scrambled it to make a type specimen book.
               </p>
             </div>
 

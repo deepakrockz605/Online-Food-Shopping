@@ -36,8 +36,7 @@ const Home = (props) => {
                   >
                     {index.orderOnline}
                   </p>
-                  {index.locate
-                    ? (
+                  {index.locate ? (
                     <p
                       className="border-primary-yellow color-2e2e2e paddling-top-10 paddling-bottom-10 paddling-left-40 paddling-right-40 locate--location"
                       style={{ cursor: 'pointer' }}
@@ -45,8 +44,7 @@ const Home = (props) => {
                       <i className="fa fa-map-marker" aria-hidden="true"></i>
                       <span className="paddling-left-10">{index.locate}</span>
                     </p>
-                      )
-                    : null}
+                  ) : null}
                 </div>
 
                 <div className="flex justify-content-space-between dine--sections paddling-top-30 paddling-bottom-30">

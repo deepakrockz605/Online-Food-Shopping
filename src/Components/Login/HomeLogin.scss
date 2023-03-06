@@ -295,6 +295,50 @@ label {
   }
 }
 
+.adduser-admin {
+  .HomeLogin--Wrapper {
+    justify-content: center;
+    height: auto;
+
+    .HomeLogin--box {
+      max-width: 60%;
+
+      .Home--Login {
+        .note-section {
+          font-size: 10px;
+          color: #04b998;
+          text-align: right;
+          display: block;
+        }
+
+        form {
+          .form-group {
+            .add-user-radioBlock {
+              display: flex;
+              margin-top: 10px;
+
+              .add-user-innerRadio {
+                margin-right: 40px;
+                display: flex;
+                flex-direction: column-reverse;
+
+                input {
+                  display: block;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+
+          .add-user-btns {
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 1199px) {
   .HomeLogin--Wrapper {
     .HomeLogin--box {
@@ -430,6 +474,26 @@ label {
             margin-bottom: 5px !important;
             .userLableInput {
               height: auto !important;
+            }
+          }
+        }
+      }
+    }
+  }
+  .adduser-admin {
+    .HomeLogin--Wrapper {
+      .HomeLogin--box {
+        max-width: 100%;
+        .Home--Login {
+          form {  
+            .add-user-btns {
+              flex-direction: column;
+              button {
+                margin: 10px 0;
+                &:nth-child(2) {
+                  margin: 0px 0 10px;
+                }
+              }
             }
           }
         }

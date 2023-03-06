@@ -80,6 +80,7 @@ h1,h2,h3,h4,h5,h6{margin: 0}
 .flex-direction-column{flex-direction: column;}
 
 .none{display: none;}
+.center {text-align: center;}
 
 
 .width-100{width: 100%;}
@@ -153,6 +154,7 @@ h1,h2,h3,h4,h5,h6{margin: 0}
 .margin-top-25{margin-top: 25px}
 .margin-top-30{margin-top: 30px}
 .margin-top-50{margin-top: 50px}
+.margin-top-70{margin-top: 70px}
 
 .margin-bottom-5{margin-bottom: 5px}
 .margin-bottom-10{margin-bottom: 10px}
@@ -399,6 +401,11 @@ line-height: 1;
 .border--rightLine{position: relative;}
 .border--rightLine::after{position: absolute;height: 20px;width: 1px;background: #ffffff;content: "";right: 0;top: 50%;transform: translate(-50%,-50%);}
 
+.admin-foodsection {
+  .food--cardList {
+    justify-content: unset;
+  }
+}
 
 .food--cardList{padding: 30px 0 0; display: flex;flex-wrap: wrap;justify-content: center;}
 .food--card{max-width: 280px;text-align: center; padding: 20px 18px;flex: 1; margin: 15px 0px;cursor: pointer;transition: box-shadow 0.6s;}
@@ -433,10 +440,10 @@ line-height: 1;
 .foodDetails--popUp .foodMenu--subproductInfo{color: #fff;font-size: 14px;font-family: 'open_sanssemibold';text-align: left;}
 .formFoodDetails{text-align: left;padding-top: 20px;display: flex;}
 
-.foodDetails--popUp [type="radio"]:checked, [type="radio"]:not(:checked) { position: absolute;left: -9999px;}
-.foodDetails--popUp [type="radio"]:checked + label,[type="radio"]:not(:checked) + label {position: relative;padding-left: 20px;cursor: pointer;line-height: 14px; display: inline-block;color: #fff;font-family: 'open_sanssemibold'}
-.foodDetails--popUp [type="radio"]:checked + label:before, [type="radio"]:not(:checked) + label:before {content: '';position: absolute;left: 0;top: 0;width: 14px;height: 14px;border: 1px solid #ddd;border-radius: 100%;background: #fff;}
-.foodDetails--popUp [type="radio"]:checked + label:after, [type="radio"]:not(:checked) + label:after {content: '';width: 8px; height: 8px; background: #000;position: absolute;top: 3px;left: 3px;border-radius: 100%;transition: all 0.2s ease;}
+.foodDetails--popUp [type="radio"]:checked { position: absolute;left: -9999px;}
+.foodDetails--popUp [type="radio"]:checked + label {position: relative;padding-left: 20px;cursor: pointer;line-height: 14px; display: inline-block;color: #fff;font-family: 'open_sanssemibold'}
+.foodDetails--popUp [type="radio"]:checked + label:before {content: '';position: absolute;left: 0;top: 0;width: 14px;height: 14px;border: 1px solid #ddd;border-radius: 100%;background: #fff;}
+.foodDetails--popUp [type="radio"]:checked + label:after {content: '';width: 8px; height: 8px; background: #000;position: absolute;top: 3px;left: 3px;border-radius: 100%;transition: all 0.2s ease;}
 .foodDetails--popUp [type="radio"]:not(:checked) + label:after { opacity: 0;-webkit-transform: scale(0);transform: scale(0);}
 .foodDetails--popUp [type="radio"]:checked + label:after {opacity: 1; -webkit-transform: scale(1); transform: scale(1);}
 
@@ -528,9 +535,9 @@ input {padding: 1rem 1rem;border: 0;width: 100%;font-size: 1rem;
 .styledsAdressOne .styled-input{max-width: 100%;}
 .styledsAdressOne{padding-left: 20px;}
 .shipSubmitBtn{display: block;margin: 0 auto;background: transparent;border: 1px solid #e85920;border-radius: 25px;padding: 4px 25px;outline: none;box-shadow: none;color: #e85920;font-family: 'open_sansregular';}
-.fieldSets ::-webkit-input-placeholder {color: #999999;font-size: 13px;font-family: 'open_sanssemibold';}
-.fieldSets :-ms-input-placeholder {color: #999999;font-size: 13px;font-family: 'open_sanssemibold';}
-.fieldSets ::placeholder {color: #999999;font-family: 'open_sanssemibold';font-size: 13px;}
+.fieldSets ::-webkit-input-placeholder, .product-dialog ::-webkit-input-placeholder {color: #999999;font-size: 13px;font-family: 'open_sanssemibold';}
+.fieldSets :-ms-input-placeholder, .product-dialog :-ms-input-placeholder {color: #999999;font-size: 13px;font-family: 'open_sanssemibold';}
+.fieldSets ::placeholder, .product-dialog ::placeholder {color: #999999;font-family: 'open_sanssemibold';font-size: 13px;}
 .container-Home-CardDetails{ background-image: linear-gradient(to top left, #303649, #4d546d);}
 .fieldSetsCard{max-width: 60%;}
 .fieldSetsCardValidity{max-width: 40%;margin-left: 20px;}
@@ -1229,3 +1236,19 @@ $yellow: #e85920;
 
 .loader-resto {position: fixed;height: 100%;width: 100%;left: 50%;top: 50%;transform: translate(-50%, -50%);transition: opacity 0.3s ease-out 0s, visibility 0.3s ease-out 0s;background-color: rgba(0, 0, 0, 0.3);z-index: 9999;}
 .loader{left: 50%;position: fixed;top: 50%;transform: translate(-50%,-50%);}
+
+
+
+.users-list {
+  .users-table {
+    padding-top: 10px;
+  }
+  .btn-addUser {
+    position: absolute;
+    top: 15px;
+    right: 0px;
+  }
+}
+.form-control:disabled {
+  background-color: #e9ecef !important;
+}

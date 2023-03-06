@@ -60,8 +60,7 @@ class SignUp extends PureComponent {
       register(userDetail).then((res) => {
         if (res.data.success) {
           this.setState({ isLoader: false, isUser: false })
-          this.props.handleLoginType(this.state.isUser)
-          toast.success(res.data.message)
+          this.props.handleLoginType(this.state.isUser, res.data.message)
         } else {
           this.setState({ isLoader: false })
           toast.error(res.data.message)
@@ -151,18 +150,16 @@ class SignUp extends PureComponent {
     return (
       <div className="Home--Login Home--SignUp">
         <ToastContainer />
-        {this.state.isLoader
-          ? (
+        {this.state.isLoader ? (
           <div className="loader-resto">
             <div className="loader">
               <FootballLoader />
             </div>
           </div>
-            )
-          : null}
+        ) : null}
         <p className="subHeader">
           <span className="subHeaderBlock">
-            <img src={logo} alt="logo" style={{ width: '100%' }} />
+            <img src={logo} alt="logo" style={{ maxWidth: '80%' }} />
           </span>
         </p>
         <form noValidate>

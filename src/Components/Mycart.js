@@ -173,8 +173,7 @@ const MyCart = (props) => {
     <div className="mycart--section">
       <div className="cartMainData">
         <div className="">
-          {props.items.length === 0
-            ? (
+          {props.items.length === 0 ? (
             <div className="container">
               <div className="text-center">
                 <p className="cartEmptyText">Your Cart is Empty.</p>
@@ -188,8 +187,7 @@ const MyCart = (props) => {
                 </div>
               </div>
             </div>
-              )
-            : (
+          ) : (
             <div className="InnerWrapper">
               <div className="cartInfo">
                 <div className="container">
@@ -533,7 +531,7 @@ const MyCart = (props) => {
                 </div>
               </div>
             </div>
-              )}
+          )}
         </div>
       </div>
     </div>

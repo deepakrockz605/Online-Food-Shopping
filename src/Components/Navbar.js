@@ -6,7 +6,13 @@ import { compose } from 'redux'
 import logo from '../Images/logo.svg'
 import { logout } from '../services/auth'
 
-const Navbar = ({ sidebarOpen, item, updateCartQuantity, setSidebarOpen }) => {
+const Navbar = ({
+  sidebarOpen,
+  item,
+  updateCartQuantity,
+  setSidebarOpen,
+  userData
+}) => {
   const navigate = useNavigate()
 
   const onSetSidebarOpen = (open) => {
@@ -55,7 +61,6 @@ const Navbar = ({ sidebarOpen, item, updateCartQuantity, setSidebarOpen }) => {
             <div className="callIcon--section">
               <div className="callIcon--UserLog position-relative">
                 <p className="position-relative">
-                  {/* <span className="HomeCart--Login" onClick={handleUser}></span> */}
                   <span className="HomeCart--Login"></span>
                 </p>
               </div>
@@ -63,17 +68,14 @@ const Navbar = ({ sidebarOpen, item, updateCartQuantity, setSidebarOpen }) => {
               <Link to="/cart" className="flex align-items-center mycart">
                 <p className="position-relative">
                   <span className="HomeCart--icon"></span>
-                  <span className="cartCount">
-                    {item.length}
-                  </span>
+                  <span className="cartCount">{item.length}</span>
                 </p>
               </Link>
             </div>
           </div>
         </div>
 
-        {sidebarOpen
-          ? (
+        {sidebarOpen ? (
           <div className="sidebar--Space">
             <span>
               <img src={logo} alt="logo" className="delicious--Sidebarimage" />
@@ -82,39 +84,49 @@ const Navbar = ({ sidebarOpen, item, updateCartQuantity, setSidebarOpen }) => {
               className="sidebar--list"
               onClick={() => onSetSidebarOpen(false)}
             >
-              <Link to="/food-menu">
-                <li className="sidebar--itemlist">We Are Food Masters</li>
-              </Link>
-              <Link to="/food-menu">
-                <li className="sidebar--itemlist">Delicious Menu</li>
-              </Link>
-              <Link to="/our-story">
-                <li className="sidebar--itemlist">Our Story</li>
-              </Link>
-              <Link to="/get-in-touch">
-                <li className="sidebar--itemlist">Get in touch</li>
-              </Link>
-              <Link to="/cart">
-                <li className="sidebar--itemlist">My Cart</li>
-              </Link>
+              {userData.Role === 'Admin' ? (
+                <>
+                  <Link to="/admin/manage-products">
+                    <li className="sidebar--itemlist">Manage Products</li>
+                  </Link>
+                  <Link to="/admin/manage-users">
+                    <li className="sidebar--itemlist">Manage Users</li>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link to="/food-menu">
+                    <li className="sidebar--itemlist">We Are Food Masters</li>
+                  </Link>
+                  <Link to="/food-menu">
+                    <li className="sidebar--itemlist">Delicious Menu</li>
+                  </Link>
+                  <Link to="/our-story">
+                    <li className="sidebar--itemlist">Our Story</li>
+                  </Link>
+                  <Link to="/get-in-touch">
+                    <li className="sidebar--itemlist">Get in touch</li>
+                  </Link>
+                  <Link to="/cart">
+                    <li className="sidebar--itemlist">My Cart</li>
+                  </Link>
+                </>
+              )}
               <li className="sidebar--itemlist" onClick={handleLogout}>
                 Logout
               </li>
             </ul>
           </div>
-            )
-          : (
+        ) : (
           <div className="sidebar--NoSpace"></div>
-            )}
+        )}
 
-        {sidebarOpen
-          ? (
+        {sidebarOpen ? (
           <div
             className="overlayWrapper"
             onClick={() => onSetSidebarOpen(false)}
-          ></div>
-            )
-          : null}
+          />
+        ) : null}
       </div>
     </section>
   )
