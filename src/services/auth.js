@@ -15,8 +15,7 @@ const config = (token, isFormData) => {
 export const register = async (newUser) => {
   return axios
     .post(
-      `${baseURL}/register`,
-      {
+      `${baseURL}/register`, {
         firstname: newUser.FirstName,
         lastname: newUser.LastName,
         username: newUser.UserName,
@@ -37,8 +36,7 @@ export const register = async (newUser) => {
 export const login = async (user) => {
   return axios
     .post(
-      `${baseURL}/login`,
-      {
+      `${baseURL}/login`, {
         username: user.UserName,
         password: user.Password
       },
@@ -56,8 +54,7 @@ export const login = async (user) => {
 export const passwordReset = async (newUser) => {
   return axios
     .post(
-      `${baseURL}/reset-password`,
-      {
+      `${baseURL}/reset-password`, {
         email: newUser.Email
       },
       config()
@@ -74,8 +71,7 @@ export const passwordReset = async (newUser) => {
 export const passwordUpdate = async (userDetails, token) => {
   return axios
     .post(
-      `${baseURL}/update-password`,
-      {
+      `${baseURL}/update-password`, {
         password: userDetails.Password,
         userId: userDetails.userId
       },
@@ -115,6 +111,17 @@ export const deleteUser = async (token, id) => {
 export const uploadProduct = async (formData, token) => {
   return await axios
     .post(`${baseURL}/upload-product`, formData, config(token, true))
+    .then((res) => {
+      return res.data
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+export const updateProduct = async (formData, token) => {
+  return await axios
+    .put(`${baseURL}/update-product`, formData, config(token, true))
     .then((res) => {
       return res.data
     })

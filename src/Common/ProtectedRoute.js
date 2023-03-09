@@ -11,7 +11,7 @@ const ProtectedRoute = ({ children, setUserData }) => {
   userDetails && setUserData(userDetails.userData)
   return (
     <>
-      {userDetails ? (
+      {userDetails && userDetails !== undefined ? (
         userDetails.userData.Role === 'Admin' ? (
           <>
             <FixedContent userData={userDetails.userData} />

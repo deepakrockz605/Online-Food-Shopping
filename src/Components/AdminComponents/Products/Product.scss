@@ -16,6 +16,19 @@
                     font-size: 14px;
                 }
             }
+            &.menu-item {
+                .MuiFormControl-root {
+                    label {
+                        padding: 0 6px;
+                        background: #fff;
+                    }
+                    .MuiInputBase-root {
+                        .MuiSelect-select {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
         }
     }
 }

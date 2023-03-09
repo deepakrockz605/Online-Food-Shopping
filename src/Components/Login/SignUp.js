@@ -243,6 +243,7 @@ class SignUp extends PureComponent {
               className="form-control userLableInput"
               type="password"
               name="Password"
+              autoComplete="off"
               value={this.state.Password}
               onChange={this.handleChange}
               required
@@ -257,6 +258,7 @@ class SignUp extends PureComponent {
               className="form-control userLableInput"
               type="password"
               name="PasswordConfirm"
+              autoComplete="off"
               value={this.state.PasswordConfirm}
               onChange={this.handleChange}
               required

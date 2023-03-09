@@ -7,7 +7,7 @@ const PrivateRoute = ({ children }) => {
   const userDetails = JSON.parse(localStorage.getItem('userData'))
   return (
     <>
-      {userDetails ? (
+      {userDetails && userDetails !== undefined ? (
         userDetails.userData.Role === 'Visitor' ? (
           <>
             <FixedContent userData={userDetails.userData} />

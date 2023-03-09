@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { baseURL } from '../../../services/index'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
@@ -6,34 +7,37 @@ import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 
 const initialState = {
-  title: '',
-  productInfo: '',
-  discountedPrice: '',
-  originalPrice: '',
-  productType: 'Starter',
-  productCategory: 'Veg'
+  Title: '',
+  Info: '',
+  Price: '',
+  StrikePrice: '',
+  ProductType: 'Starter',
+  Category: 'Veg',
+  Availability: 'Yes'
 }
 
 export default function ProductUploadOverlay ({
   open,
   handleOverlayValue,
-  handleDataUpload
+  handleDataUpload,
+  editedProduct
 }) {
   const [file, setFile] = useState()
   const [formData, setFormData] = useState({
-    title: '',
-    productInfo: '',
-    discountedPrice: '',
-    originalPrice: '',
-    productType: 'Starter',
-    productCategory: 'Veg',
-    imgPreview: null
+    Title: '',
+    Info: '',
+    Price: '',
+    StrikePrice: '',
+    ProductType: 'Starter',
+    Category: 'Veg',
+    File: null,
+    Availability: 'Yes'
   })
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0]
-    const title = file.name.split('.')[0]
-    setFormData({ ...formData, title, imgPreview: URL.createObjectURL(file) })
+    const Title = file.name.split('.')[0]
+    setFormData({ ...formData, Title, File: URL.createObjectURL(file) })
     setFile(e.target.files[0])
   }
 
@@ -49,33 +53,47 @@ export default function ProductUploadOverlay ({
 
   const handleAddProduct = (e) => {
     e.preventDefault()
-    handleDataUpload(file, formData)
+    handleDataUpload(file, formData, editedProduct && editedProduct.Id)
     setFormData(initialState)
   }
+
+  useEffect(() => {
+    if (open && editedProduct && editedProduct.Id) {
+      const file = `${baseURL}/${editedProduct.File}`
+      setFormData({ ...editedProduct, Availability: editedProduct.Availability === 1 ? 'Yes' : 'No', File: file })
+    }
+  }, [open])
 
   const productCategories = [
     {
       value: 'Veg',
-      label: 'Veg',
-      name: 'productCategory'
+      label: 'Veg'
     },
     {
       value: 'Non Veg',
-      label: 'Non Veg',
-      name: 'productCategory'
+      label: 'Non Veg'
     }
   ]
 
-  const productTypes = [
+  const Availability = [
+    {
+      value: 'Yes',
+      label: 'Yes'
+    },
+    {
+      value: 'No',
+      label: 'No'
+    }
+  ]
+
+  const ProductTypes = [
     {
       value: 'Starter',
-      label: 'Starter',
-      name: 'productType'
+      label: 'Starter'
     },
     {
       value: 'Main Course',
-      label: 'Main Course',
-      name: 'productType'
+      label: 'Main Course'
     }
   ]
 
@@ -90,7 +108,7 @@ export default function ProductUploadOverlay ({
       <DialogContent>
         <form>
           <div className="center">
-            <img src={formData.imgPreview} />
+            <img src={formData.File} />
           </div>
           <div className="center margin-top-10">
             <Button variant="contained" component="label" size="small">
@@ -109,8 +127,8 @@ export default function ProductUploadOverlay ({
               id="product-title"
               label="Title"
               variant="standard"
-              name="title"
-              value={formData.title}
+              name="Title"
+              value={formData.Title}
               onChange={handleChange}
             />
           </div>
@@ -119,9 +137,9 @@ export default function ProductUploadOverlay ({
               id="product-info"
               label="Product Information"
               variant="standard"
-              name="productInfo"
+              name="Info"
               multiline
-              value={formData.productInfo}
+              value={formData.Info}
               onChange={handleChange}
             />
           </div>
@@ -131,8 +149,8 @@ export default function ProductUploadOverlay ({
               label="Discounted Price"
               variant="standard"
               type="number"
-              name="discountedPrice"
-              value={formData.discountedPrice}
+              name="Price"
+              value={formData.Price}
               onChange={handleChange}
             />
             <TextField
@@ -140,25 +158,45 @@ export default function ProductUploadOverlay ({
               label="Original Price"
               variant="standard"
               type="number"
-              name="originalPrice"
-              value={formData.originalPrice}
+              name="StrikePrice"
+              value={formData.StrikePrice}
               onChange={handleChange}
             />
           </div>
           <div className="form-group">
-            <TextField
-              id="product-type"
+          <TextField
+              id="availability"
               select
-              label="Product Type"
-              defaultValue="Main Course"
-              name="productType"
+              label="Availability"
+              value={formData.Availability}
+              name="Availability"
               onChange={handleChange}
               SelectProps={{
                 native: true
               }}
               variant="standard"
             >
-              {productTypes.map((option) => (
+              {Availability.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </TextField>
+          </div>
+          <div className="form-group">
+            <TextField
+              id="product-type"
+              select
+              label="Product Type"
+              value={formData.ProductType}
+              name="ProductType"
+              onChange={handleChange}
+              SelectProps={{
+                native: true
+              }}
+              variant="standard"
+            >
+              {ProductTypes.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
@@ -168,9 +206,9 @@ export default function ProductUploadOverlay ({
               id="product-category"
               select
               label="Product Category"
-              defaultValue="Main Course"
-              name="productCategory"
+              name="Category"
               onChange={handleChange}
+              value={formData.Category}
               SelectProps={{
                 native: true
               }}
@@ -188,7 +226,7 @@ export default function ProductUploadOverlay ({
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
         <Button onClick={(e) => handleAddProduct(e)} autoFocus>
-          Add Product
+          {editedProduct && editedProduct.Id ? 'Update Product' : 'Add Product' }
         </Button>
       </DialogActions>
     </Dialog>

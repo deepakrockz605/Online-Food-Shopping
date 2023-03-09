@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { uploadProduct, fetchProducts } from '../../../services/auth'
+import { uploadProduct, fetchProducts, updateProduct } from '../../../services/auth'
 import { ToastContainer, toast } from 'react-toastify'
 import Button from '@mui/material/Button'
 import AddIcon from '@mui/icons-material/Add'
@@ -25,27 +25,44 @@ export default function Products () {
     setEditedProduct(editedProduct)
   }
 
-  const handleDataUpload = async (file, userData) => {
+  const handleDataUpload = async (file, userData, productId) => {
     const formData = new FormData()
     formData.append('image', file)
-    formData.append('title', userData.title)
-    formData.append('productInfo', userData.productInfo)
-    formData.append('originalPrice', userData.originalPrice)
-    formData.append('discountedPrice', userData.discountedPrice)
-    formData.append('productType', userData.productType)
-    formData.append('productCategory', userData.productCategory)
+    formData.append('title', userData.Title)
+    formData.append('productInfo', userData.Info)
+    formData.append('originalPrice', userData.StrikePrice)
+    formData.append('discountedPrice', userData.Price)
+    formData.append('productType', userData.ProductType)
+    formData.append('productCategory', userData.Category)
+    formData.append('availability', userData.Availability === 'Yes')
+    formData.append('Id', productId)
+
     setIsLoader(true)
-    uploadProduct(formData, userDetails.token).then((res) => {
-      setIsLoader(false)
-      setOpen(false)
-      setEditedProduct({})
-      if (res && res.success) {
-        handleFetchProducts()
-        toast.success(res.message)
-      } else {
-        toast.error(res.err || res.message)
-      }
-    })
+    if (productId) {
+      updateProduct(formData, userDetails.token).then((res) => {
+        setIsLoader(false)
+        setOpen(false)
+        setEditedProduct({})
+        if (res && res.success) {
+          handleFetchProducts()
+          toast.success(res.message)
+        } else {
+          toast.error(res.err || res.message)
+        }
+      })
+    } else {
+      uploadProduct(formData, userDetails.token).then((res) => {
+        setIsLoader(false)
+        setOpen(false)
+        setEditedProduct({})
+        if (res && res.success) {
+          handleFetchProducts()
+          toast.success(res.message)
+        } else {
+          toast.error(res.err || res.message)
+        }
+      })
+    }
   }
 
   const handleFetchProducts = () => {
@@ -61,6 +78,7 @@ export default function Products () {
     setIsLoader(true)
     handleFetchProducts()
   }, [])
+
   return (
     <div className="margin-top-70">
       <ToastContainer />

@@ -5,7 +5,7 @@ const PublicRoute = ({ children }) => {
   const userDetails = JSON.parse(localStorage.getItem('userData'))
   return (
     <>
-      {userDetails ? (
+      {userDetails && userDetails !== undefined ? (
         userDetails.userData.Role === 'Admin' ? (
           <Navigate to="/admin/dashboard" />
         ) : (

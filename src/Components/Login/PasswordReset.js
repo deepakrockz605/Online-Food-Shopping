@@ -141,6 +141,7 @@ const PasswordReset = (props) => {
                 type="password"
                 name="Password"
                 value={formData.Password}
+                autoComplete="off"
                 onChange={handleChange}
                 required
               />
@@ -155,6 +156,7 @@ const PasswordReset = (props) => {
                 type="password"
                 name="PasswordConfirm"
                 value={formData.PasswordConfirm}
+                autoComplete="off"
                 onChange={handleChange}
                 required
               />

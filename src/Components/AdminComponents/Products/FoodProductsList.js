@@ -2,6 +2,8 @@ import React from 'react'
 import { baseURL } from '../../../services/index'
 import nonVegImg from '../../../Images/non-vegetarian-food-symbol.png'
 import vegImg from '../../../Images/vegetarian-food-symbol.png'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
+import CancelIcon from '@mui/icons-material/Cancel'
 
 const FoodProductsList = ({ productsData, handleOverlayValue }) => {
   const handleEditProduct = (product) => {
@@ -39,6 +41,9 @@ const FoodProductsList = ({ productsData, handleOverlayValue }) => {
                     <p className="food--cardHeader">{product.Title}</p>
                   </li>
                 </ul>
+                <p className="food--cardHeader">
+                  Availeble: { ' ' } {product.Availability ? <CheckCircleIcon color='success' /> : <CancelIcon color='error' />}
+                </p>
 
                 <p className="food--cardStarter font-14 open_sansregular color-ccc">
                   {product.ProductType}

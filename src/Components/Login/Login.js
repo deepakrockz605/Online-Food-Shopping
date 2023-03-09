@@ -121,6 +121,7 @@ const Login = (props) => {
             className="form-control userLableInput"
             type="password"
             name="Password"
+            autoComplete="off"
             value={formData.Password}
             onChange={handleChange}
             pattern=".{5,}"

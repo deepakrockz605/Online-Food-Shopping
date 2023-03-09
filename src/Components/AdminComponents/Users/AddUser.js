@@ -186,6 +186,7 @@ const AddUser = () => {
                         name="Password"
                         value={formData.Password}
                         onChange={handleChange}
+                        autoComplete="off"
                         disabled
                       />
                     </div>
